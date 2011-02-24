@@ -8,6 +8,8 @@ require 'logger'
 require 'date'
 require 'csv'
 
+require './model/locations.rb'
+
 # set our logging options
 ActiveRecord::Base.logger = Logger.new(STDERR)
 #ActiveRecord::Base.colorize_logging = false
@@ -71,6 +73,21 @@ def self.by_date( date=Date.today )
 
    return self.where( 'date LIKE ? OR date LIKE ?', wday_string, date_string )
    
+end
+
+def self.by_neighborhood( hood )
+
+	# grab the list of locations for a particular neighborhood
+	locations = Locations.where( 'neighborhood LIKE ?', hood )
+	stops = []
+
+	# for each location, list out the stops
+	locations.each do | location |
+		stops.push(self.where( 'location LIKE ?', location.location))
+	end
+
+	return stops
+
 end
 
 #def self.to_s 
