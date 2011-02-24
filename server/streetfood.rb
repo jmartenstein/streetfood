@@ -18,3 +18,8 @@ get '/truck/:truck_name' do | name |
 	@name = name
 	haml :truck	
 end
+
+get '/neighborhood/:neighborhood' do | hood |
+	@neighborhood = hood
+	haml :neighborhood
+end

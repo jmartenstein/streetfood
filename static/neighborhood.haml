@@ -1,0 +1,13 @@
+- locations = Locations.where('neighborhood like ?', @neighborhood).first
+- hood_name = locations.first.neighborhood
+
+%head
+	%title Seattle Food Trucks > Neighborhoods > #{hood_name} 
+	%link{:rel => "stylesheet", :href => "../stylesheet.css", :type => "text/css"}
+
+%body
+	.header Seattle Food Trucks > Neighborhoods > #{hood_name}
+	%br
+
+	.main
+
