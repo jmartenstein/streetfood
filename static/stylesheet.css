@@ -1,0 +1,48 @@
+.header {
+		font-size: 28px;
+		padding: 5px;
+}	
+
+.main {
+}
+
+.day {
+		padding: 5px;
+}
+	
+.date {
+}
+	
+.no_stop {
+	color: gray;
+	top: 5px;
+	height: 30px;
+}
+
+.stop {
+	position: relative;
+	top: 5px;
+	height: 30px;
+}
+
+.truck_name {
+	position: absolute;
+	left: 0px
+}
+
+.location {
+	position: absolute;
+	left: 150px;
+}
+
+.neighborhood {
+	position: absolute;
+	left: 300px;
+}
+
+.hours {
+	position: absolute;
+	left: 450px;
+}
+
+

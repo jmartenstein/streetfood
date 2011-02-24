@@ -1,0 +1,22 @@
+%head
+	%title Seattle Food Trucks
+	%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+
+%body
+
+	.header Seattle Food Trucks
+
+	.main
+		- (0 .. 6).each do |i|
+			.day 
+				- day = Date.today + i
+				.date #{day}
+				- stops = Stops.by_date(day)
+				- if (!stops.empty?)
+					- stops.each do |stop|
+						.stop
+							.truck_name #{stop.truck_name}
+							.location #{stop.location}
+							.hours #{stop.hours}
+				- else
+					.no_stop No trucks today
