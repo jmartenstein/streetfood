@@ -8,9 +8,9 @@ require 'rake'
 require 'date'
 
 # import custom library
-require './model/stops.rb'
-require './model/locations.rb'
-require './model/trucks.rb'
+require './model/stop.rb'
+require './model/location.rb'
+require './model/truck.rb'
 
 namespace "db" do
 
@@ -23,19 +23,21 @@ desc "re-create the database with data"
 task :reload do
 
 	# delete each of the tables
-   Stops.down
-	Locations.down
-	Trucks.down
+   Stop.down
+	Location.down
+	Truck.down
 
-	# recreate each of the tables, define their schemas
-   Stops.up
-	Locations.up
-	Trucks.up
+	# bring up the Locations first
+	Location.up
+	Location.import
 
-	# import data from the csv file into each table
-	Stops.import
-	Locations.import
-	Trucks.import
+	# bring up the Trucks second
+	Truck.up
+	Truck.import
+
+	# bring up the Stops last, since it's dependant on the other two
+	Stop.up
+	Stop.import
 
 end
 
