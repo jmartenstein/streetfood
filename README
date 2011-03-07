@@ -1,3 +1,12 @@
-Sinatra / HAML based web app. Will be used to track street food trucks around Seattle.
+Sinatra / HAML based web app. Used to track street food trucks around Seattle.
 
 Start by running "ruby server/streetfood.rb"
+
+TODO:
+
+- determine layout / stylesheet
+- view by stops (days)
+- view by neighborhood
+- view by truck
+
+- add .json and .xml to each page
