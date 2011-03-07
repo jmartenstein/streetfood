@@ -3,9 +3,9 @@
 require 'sinatra'
 require 'haml'
 
-require './model/stops.rb'
-require './model/trucks.rb'
-require './model/locations.rb'
+require './model/stop.rb'
+require './model/truck.rb'
+require './model/location.rb'
 
 set :views, File.dirname(__FILE__) + '/../static'
 set :public, File.dirname(__FILE__) + '/../static'

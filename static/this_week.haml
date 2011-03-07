@@ -11,12 +11,12 @@
 			.day 
 				- day = Date.today + i
 				.date #{day}
-				- stops = Stops.by_date(day)
+				- stops = Stop.by_date(day)
 				- if (!stops.empty?)
 					- stops.each do |stop|
 						.stop
-							.truck_name #{stop.truck_name}
-							.location #{stop.location}
+							.truck_name #{stop.truck.name}
+							.location #{stop.location.name }
 							.hours #{stop.hours}
 				- else
 					.no_stop No trucks today

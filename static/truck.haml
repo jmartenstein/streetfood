@@ -9,11 +9,11 @@
 	.main
 
 		- # grab the truck and stop information here 
-		- truck = Trucks.where('truck_name like ?', @name).first
-		- stops = Stops.where('truck_name like ?', @name)
+		- truck = Truck.where('name like ?', @name).first
+		- # stops = Stop.where('truck_name like ?', @name)
 
 		/ display information about the truck
-		.name #{truck.truck_name}
+		.name #{truck.name}
 		.website #{truck.website}
 		/ # p truck.truck_name
 		%br
@@ -23,11 +23,11 @@
 			.day
 				- day = Date.today + i
 				.date #{day}
-				- day_stops = stops.by_date(day)
+				- day_stops = truck.stops.by_date(day)
 				- if (!day_stops.empty?)
 					- day_stops.each do |stop|
 						.stop
-							.location #{stop.location}
+							.location #{stop.location.name}
 							.hours #{stop.hours}
 				- else
 					.no_stop No trucks today

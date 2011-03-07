@@ -1,5 +1,5 @@
-- locations = Locations.where('neighborhood like ?', @neighborhood).first
-- hood_name = locations.first.neighborhood
+- location = Location.where('neighborhood like ?', @neighborhood).first
+- hood_name = location.neighborhood
 
 %head
 	%title Seattle Food Trucks > Neighborhoods > #{hood_name} 
