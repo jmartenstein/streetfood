@@ -4,10 +4,10 @@ generate page-per-neighborhood
  - use this to nail down CSS
 generate page-per-truck
 
-create project in github
-
 views
 
 by stops
 by neighborhood
 by truck
+
+add ".json" and ".xml" to each page
