@@ -10,12 +10,14 @@
 		- (0 .. 6).each do |i|
 			.day 
 				- day = Date.today + i
-				.date #{day}
+				.date 
+					%h4 #{day}
 				- stops = Stop.by_date(day)
 				- if (!stops.empty?)
 					- stops.each do |stop|
 						.stop
 							.truck_name #{stop.truck.name}
+							.neighborhood #{stop.location.neighborhood }
 							.location #{stop.location.name }
 							.hours #{stop.hours}
 				- else

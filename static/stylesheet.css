@@ -21,7 +21,8 @@
 
 .stop {
 	position: relative;
-	top: 5px;
+	top: -10px;
+	left: 10px;
 	height: 30px;
 }
 
@@ -32,12 +33,12 @@
 
 .location {
 	position: absolute;
-	left: 150px;
+	left: 300px;
 }
 
 .neighborhood {
 	position: absolute;
-	left: 300px;
+	left: 150px;
 }
 
 .hours {
