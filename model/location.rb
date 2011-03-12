@@ -8,6 +8,8 @@ require 'logger'
 require 'date'
 require 'csv'
 
+require './model/neighborhood.rb'
+
 # set looging options
 ActiveRecord::Base.logger = Logger.new(STDERR)
 
@@ -18,7 +20,8 @@ ActiveRecord::Base.establish_connection(
 )
 
 class Location < ActiveRecord::Base
-	has_many :stops
+	has_many 	:stops
+	belongs_to	:neighborhood
 
 # create the table
 def self.up
@@ -26,9 +29,9 @@ def self.up
 	# define the schema for the Locations table
 	ActiveRecord::Schema.define do
 		create_table :locations do | table |
-			table.column :name,				:string
-			table.column :neighborhood,	:string
-			table.column :notes,				:string
+			table.string 		:name
+			table.references	:neighborhood
+			table.string		:notes
 		end
 	end
 
@@ -45,11 +48,14 @@ def self.import
 	# import the data from the associated csv file
 	CSV.foreach("./data/locations.csv") do | line |
 
+		# look up neighborhood
+		neighborhood = Neighborhood.where('name LIKE ?', line[1]).first
+
 		#create a record for each line in the file
 		record = self.create(
-			:name				=> line[0],
-			:neighborhood 	=> line[1],
-			:notes			=> line[2]
+			:name					=> line[0],
+			:neighborhood_id 	=> neighborhood.id,
+			:notes				=> line[2]
 		)	
 
    end  # CSV.foreach
