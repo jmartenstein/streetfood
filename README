@@ -2,11 +2,20 @@ Sinatra / HAML based web app. Used to track street food trucks around Seattle.
 
 Start by running "ruby server/streetfood.rb"
 
+Pages:
+	1) Master list of all neighborhoods (layout derivative of Craigslist)
+	2) Individual neighborhood page, with next three days of stops
+	3) Individual truck page, with next three days of stops
+
 TODO:
 
+- add Neighborhood class to model
+- migrate to sass
+- add page layout (see above)
+- add Food class to model
 - determine layout / stylesheet
-- view by stops (days)
 - view by neighborhood
 - view by truck
 
 - add .json and .xml to each page
+- figure out onhover for css
