@@ -20,6 +20,7 @@ ActiveRecord::Base.establish_connection(
 
 class Truck < ActiveRecord::Base
 	has_many :stops
+	has_and_belongs_to_many :foods
 
 def self.up
 

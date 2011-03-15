@@ -9,8 +9,9 @@ require 'date'
 
 # import custom library
 require './model/stop.rb'
-require './model/location.rb'
-require './model/truck.rb'
+require './model/food_truck.rb'
+#require './model/location.rb'
+#require './model/truck.rb'
 
 namespace "db" do
 
@@ -24,8 +25,19 @@ task :reload do
 
 	# delete each of the tables
    Stop.down
+	FoodsTrucks.down
 	Location.down
 	Truck.down
+	Neighborhood.down
+	Food.down
+
+	# bring up Neighborhoods
+	Neighborhood.up
+	Neighborhood.import
+
+	# bring up food next
+	Food.up
+	Food.import
 
 	# bring up the Locations first
 	Location.up
@@ -35,9 +47,13 @@ task :reload do
 	Truck.up
 	Truck.import
 
-	# bring up the Stops last, since it's dependant on the other two
+	# bring up the Stops close to last, since it's dependant on the other two
 	Stop.up
 	Stop.import
+
+	# bring up the Foods / Trucks join last
+	FoodsTrucks.up
+	FoodsTrucks.import
 
 end
 
