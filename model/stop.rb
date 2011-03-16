@@ -86,12 +86,13 @@ end
 def self.by_neighborhood( hood )
 
 	# grab the list of locations for a particular neighborhood
-	locations = Locations.where( 'neighborhood LIKE ?', hood )
+	neighborhood = Neighborhood.find_by_name(hood)
+	locations = Location.where( 'neighborhood_id LIKE ?', neighborhood.id )
 	stops = []
 
 	# for each location, list out the stops
 	locations.each do | location |
-		stops.push(self.where( 'location LIKE ?', location.location))
+		stops.push(self.where( 'location_id LIKE ?', location.id))
 	end
 
 	return stops
