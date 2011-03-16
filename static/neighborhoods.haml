@@ -1,0 +1,11 @@
+%head
+	%title Seattle Food Trucks
+	%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+
+%body
+	.header Seattle Food Trucks
+
+	.main
+		- Neighborhood.all.each do |hood|
+			%a{ :href=>"neighborhood/#{hood.name}"} #{hood.name}
+			%br

@@ -11,7 +11,11 @@ set :views, File.dirname(__FILE__) + '/../static'
 set :public, File.dirname(__FILE__) + '/../static'
 
 get '/' do
-   haml :this_week
+   haml :neighborhoods
+end
+
+get '/this_week' do
+	haml :this_week
 end
 
 get '/truck/:truck_name' do | name |
