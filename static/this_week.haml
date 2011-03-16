@@ -17,7 +17,7 @@
 					- stops.each do |stop|
 						.stop
 							.truck_name #{stop.truck.name}
-							.neighborhood #{stop.location.neighborhood }
+							.neighborhood #{stop.location.neighborhood.name }
 							.location #{stop.location.name }
 							.hours #{stop.hours}
 				- else
