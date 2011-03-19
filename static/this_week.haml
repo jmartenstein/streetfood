@@ -16,9 +16,6 @@
 				- if (!stops.empty?)
 					- stops.each do |stop|
 						.stop
-							.truck_name #{stop.truck.name}
-							.neighborhood #{stop.location.neighborhood.name }
-							.location #{stop.location.name }
-							.hours #{stop.hours}
+							%p #{stop.truck.name}, #{stop.location.neighborhood.name }, #{stop.location.name }, #{stop.hours}
 				- else
 					.no_stop No trucks today

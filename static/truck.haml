@@ -13,9 +13,9 @@
 		- # stops = Stop.where('truck_name like ?', @name)
 
 		/ display information about the truck
-		.name #{truck.name}
-		.website #{truck.website}
+		%a{ :href => "#{truck.website}" } #{truck.name}
 		/ # p truck.truck_name
+		%br
 		%br
 
 		/ display information about the trucks upcoming stops
@@ -27,8 +27,9 @@
 				- if (!day_stops.empty?)
 					- day_stops.each do |stop|
 						.stop
-							.location #{stop.location.name}
-							.hours #{stop.hours}
+							%a{ :href => "../neighborhood/#{stop.location.neighborhood.name}" }> 
+								#{stop.location.neighborhood.name}
+							, #{stop.location.name}, #{stop.hours}
 				- else
 					.no_stop No trucks today
 

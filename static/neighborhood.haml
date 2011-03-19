@@ -5,11 +5,11 @@
 	%link{:rel => "stylesheet", :href => "../stylesheet.css", :type => "text/css"}
 
 %body
-	.header Seattle Food Trucks #{hood.name}
+	.header Seattle Food Trucks > #{hood.name}
 	%br
 
 	.main
-		- (0..2).each do |i|
+		- (0..3).each do |i|
 			.day
 
 				-# grab the ruby objects 
@@ -18,10 +18,12 @@
 
 				-# display information
 				.date
-					%h4 #{day}
+					#{day}
 				- if (!stops.empty?)
 					- stops.each do |stop|
 						.stop
-							%p #{stop.truck.name}, #{stop.location.name}, #{stop.hours}
+							%a{ :href=>"../truck/#{stop.truck.name}" }> #{stop.truck.name} 
+							, #{stop.location.name}, #{stop.hours}
 				- else
-					.no_stop No trucks today
+					.no_stop 
+						No trucks today

@@ -1,29 +1,49 @@
 .header {
-		font-size: 28px;
-		padding: 5px;
+	font-size: 28px;
+	padding: 0px;
+	/*border-style: solid;*/
+	border-color: red;
 }	
 
 .main {
+	position: absolute;
+	padding: 5px;
+	top: 50px;
+	border-style: solid;
+	border-color: blue;
+	border-width: 0px;
 }
 
 .day {
-		padding: 5px;
+	top: 0px;
+	border-width: 0px;
+	border-color: black;
+	border-style: solid;
+	padding: 5px;
 }
 	
 .date {
+	top: -20px;
+	border-style: solid;
+	border-width: 0px;
+	padding: 0px;
+	font-weight:bold;
 }
 	
 .no_stop {
+	position: relative;
+	font-style: italic;
 	color: gray;
-	top: 5px;
-	height: 30px;
+	top: 3px;
+	left: 10px;
+	height: 20px;
 }
 
 .stop {
 	position: relative;
-	top: -10px;
+	top: 3px;
 	left: 10px;
-	height: 30px;
+	height: 20px;
 }
 
 .truck_name {
@@ -45,5 +65,6 @@
 	position: absolute;
 	left: 450px;
 }
+
 
 
