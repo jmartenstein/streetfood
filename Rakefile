@@ -24,12 +24,12 @@ desc "re-create the database with data"
 task :reload do
 
 	# delete each of the tables
-   Stop.down
-	FoodsTrucks.down
-	Location.down
-	Truck.down
-	Neighborhood.down
-	Food.down
+	Stop.down 				if Stop.table_exists?
+	FoodsTrucks.down 		if FoodsTrucks.table_exists?
+	Location.down 			if Location.table_exists?
+	Truck.down 				if Truck.table_exists?
+	Neighborhood.down 	if Neighborhood.table_exists?
+	Food.down 				if Food.table_exists?
 
 	# bring up Neighborhoods
 	Neighborhood.up
