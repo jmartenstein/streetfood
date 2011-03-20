@@ -1,2 +1,2 @@
-require './server/streetfood.rb'
+require './server/streetfood'
 run Sinatra::Application
