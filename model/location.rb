@@ -14,9 +14,9 @@ require './model/neighborhood.rb'
 ActiveRecord::Base.logger = Logger.new(STDERR)
 
 # create the connection to the database
+dbconfig = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection(
-	:adapter   => "sqlite3",
-	:database  => "./data/streetfood.db"
+	dbconfig['production']
 )
 
 class Location < ActiveRecord::Base

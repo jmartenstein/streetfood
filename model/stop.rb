@@ -16,10 +16,10 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 #ActiveRecord::Base.colorize_logging = false
 
 # create the connection to our database
+dbconfig = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection(
-   :adapter => "sqlite3",
-   :database => "./data/streetfood.db"
-) 
+	dbconfig['production']
+)
 
 class Stop < ActiveRecord::Base
 	belongs_to 	:truck
