@@ -7,15 +7,12 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
 
 	%head
-		%title Lunch on Four Wheels, a Seattle street food directory
+		%title #{@page_text['title']}, #{@page_text['sub-title']} 
 		%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
 
 	%body
-		.header 
-			%strong.site-name Lunch on Four Wheels
-			%br
-			%font.site-sub-name a seattle street food directory
-
+		=haml :header, :layout => false
+		
 		.info
 			%strong.title Neighborhoods
 
@@ -25,11 +22,4 @@
 					%li.neighborhood
 						%a{ :href=>"neighborhood/#{hood.name}" }= hood.name
 
-		.footer
-			%font.footer
-				(c) Justin Martenstein, 2011
-				%br
-				%a{ :href => "about" } about 
-				|
-				%a{ :href => "feedback" } feedback
-
+		=haml :footer, :layout => false

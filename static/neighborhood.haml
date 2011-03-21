@@ -8,11 +8,8 @@
 	%link{:rel => "stylesheet", :href => "../stylesheet.css", :type => "text/css"}
 
 %body
-	.header
-		%strong.site-name Lunch on Four Wheels
-		%br
-		%font.site-sub-name a seattle street food directory
-	
+	=haml :header, :layout => false
+
 	- # get the neighborhood object
 	- hood = Neighborhood.find_by_name(@neighborhood)
 
@@ -30,14 +27,17 @@
 				%li.date
 
 					-# display information
-					%strong.date #{day}
+					%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 					%ul.stops
 
 						- if (!stops.empty?)
 							- stops.each do |stop|
 								%li.stop
-									%a{ :href => "../truck/#{stop.truck.name}" }> #{stop.truck.name} 
+									%a{ :href => "../truck/#{stop.truck.name}" }>= stop.truck.name 
 									, #{stop.location.name}, #{stop.hours}
 						- else
 							%li.no_stop 
 								No trucks today
+
+	=haml :footer, :layout => false
+
