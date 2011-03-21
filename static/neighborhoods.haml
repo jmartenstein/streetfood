@@ -1,11 +1,35 @@
-%head
-	%title Seattle Food Trucks
-	%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+-# neighborhoods.haml
+-# Justin Martenstein - March, 2011
 
-%body
-	.header Seattle Food Trucks
+!!! XML
+!!!
 
-	.main
-		- Neighborhood.all.each do |hood|
-			%a{ :href=>"neighborhood/#{hood.name}"} #{hood.name}
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	%head
+		%title Lunch on Four Wheels, a Seattle street food directory
+		%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+
+	%body
+		.header 
+			%strong.site-name Lunch on Four Wheels
 			%br
+			%font.site-sub-name a seattle street food directory
+
+		.info
+			%strong.title Neighborhoods
+
+		.main
+			%ul.neighborhoods
+				- Neighborhood.all.each do |hood|
+					%li.neighborhood
+						%a{ :href=>"neighborhood/#{hood.name}" }= hood.name
+
+		.footer
+			%font.footer
+				(c) Justin Martenstein, 2011
+				%br
+				%a{ :href => "about" } about 
+				|
+				%a{ :href => "feedback" } feedback
+

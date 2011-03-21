@@ -1,70 +1,85 @@
-.header {
-	font-size: 28px;
-	padding: 0px;
-	/*border-style: solid;*/
-	border-color: red;
-}	
+/* stylesheet for streetfood webapp 
+	Justin Martenstein, March 2011 
+*/
 
-.main {
+body {
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 0px solid gray;
+	padding: 10px;
+	font-family: georgia;
+	background: #FFFFFF;
+}
+
+.header {
+	text-align: right;
+	padding: 0px;
+	color: gray;
+	border: 0px solid;
+}
+
+strong.site-name {
+	font-size: 18px;
+}
+
+/*.main {
 	position: absolute;
 	padding: 5px;
 	top: 50px;
 	border-style: solid;
 	border-color: blue;
 	border-width: 0px;
+}*/
+
+strong.title {
+	font-size: 24px;
 }
 
-.day {
-	top: 0px;
-	border-width: 0px;
-	border-color: black;
-	border-style: solid;
-	padding: 5px;
+strong.neighborhood {
+	font-size: 24px;
+}
+
+strong.truck {
+	font-size: 24px;
+}
+
+ul.days {
+	list-style-type: none;
+}
+
+ul.neighborhoods {
+	list-style-type: none;
+}
+
+li.day {
+	border: 0px solid black;
+	padding-bottom: 10px;
 }
 	
-.date {
-	top: -20px;
-	border-style: solid;
-	border-width: 0px;
-	padding: 0px;
-	font-weight:bold;
+strong.date {
+	padding-bottom: 15px;
 }
-	
-.no_stop {
-	position: relative;
-	font-style: italic;
+
+ul.stops {
+	list-style-type: none;
+	padding-top: 2px;
+}
+
+li.stop {
+}
+
+li.no_stop {
+	font: italic;
 	color: gray;
-	top: 3px;
-	left: 10px;
-	height: 20px;
-}
-
-.stop {
-	position: relative;
-	top: 3px;
-	left: 10px;
-	height: 20px;
-}
-
-.truck_name {
-	position: absolute;
-	left: 0px
-}
-
-.location {
-	position: absolute;
-	left: 300px;
-}
-
-.neighborhood {
-	position: absolute;
-	left: 150px;
-}
-
-.hours {
-	position: absolute;
-	left: 450px;
 }
 
 
+.footer {
+	color: gray;
+	text-align: center;
+}
 
+font.footer {
+	font-size: 12px;
+}

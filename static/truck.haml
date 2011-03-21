@@ -1,35 +1,45 @@
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
 %head
-	%title Seattle Food Trucks
+	%title Lunch on Four Wheels, a seattle street food directory
 	%link{:rel => "stylesheet", :href => "../stylesheet.css", :type => "text/css"}
 
 %body
-	.header Seattle Food Trucks
-	%br
+
+	.header 
+		%strong.site-nme Lunch on Four Wheels
+		%br
+		%font.site-sub-name a seattle street food directory
+
+	- # grab the truck and stop information here 
+	- truck = Truck.find_by_name(@name)
+	- # stops = Stop.where('truck_name like ?', @name)
+
+	.info
+		/ display information about the truck
+		%a{ :href => "#{truck.website}" } 
+			%strong.truck #{truck.name} 
 
 	.main
 
-		- # grab the truck and stop information here 
-		- truck = Truck.where('name like ?', @name).first
-		- # stops = Stop.where('truck_name like ?', @name)
-
-		/ display information about the truck
-		%a{ :href => "#{truck.website}" } #{truck.name}
-		/ # p truck.truck_name
-		%br
-		%br
-
 		/ display information about the trucks upcoming stops
 		- (0 .. 3).each do |i|
-			.day
+			%ul.days
+
+				-# grab the ruby date object
 				- day = Date.today + i
-				.date #{day}
-				- day_stops = truck.stops.by_date(day)
-				- if (!day_stops.empty?)
-					- day_stops.each do |stop|
-						.stop
-							%a{ :href => "../neighborhood/#{stop.location.neighborhood.name}" }> 
-								#{stop.location.neighborhood.name}
-							, #{stop.location.name}, #{stop.hours}
-				- else
-					.no_stop No trucks today
+				- stops = truck.stops.by_date(day)
+
+				%li.date 
+					%strong.date #{day}
+					%ul.stops
+
+						- if (!stops.empty?)
+							- stops.each do |stop|
+								%li.stop
+									%a{ :href => "../neighborhood/#{stop.location.neighborhood.name}" }> 
+										#{stop.location.neighborhood.name}
+									, #{stop.location.name}, #{stop.hours}
+						- else
+							%li.no_stop No trucks today
 
