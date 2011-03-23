@@ -11,14 +11,19 @@ TODO:
 
 x add Neighborhood class to model
 - migrate to sass
-- add page layout (see above)
+x add page layout (see above)
 x add Food class to model
-- determine layout / stylesheet
+x determine layout / stylesheet
 x view by neighborhood
 x view by truck
-- match layout to mockup
-- use haml helpers (e.g. for lists)
+x match layout to mockup
+o use haml helpers (e.g. for lists)
 - write database modify script
+- more data!!!
+- header should link back to index
+- add "about" and "feedback" pages
+- clean up "this week" page
+- add stationary trucks to model
 
 - add .json and .xml to each page
 - figure out onhover for css
