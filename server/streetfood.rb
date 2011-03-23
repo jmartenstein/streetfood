@@ -27,6 +27,7 @@ get '/' do
 end
 
 get '/this_week' do
+	@page_text = page_text
 	haml :this_week
 end
 
@@ -37,6 +38,7 @@ get '/truck/:truck_name' do | name |
 end
 
 get '/trucks' do 
+	@page_text = page_text
 	haml :trucks
 end
 

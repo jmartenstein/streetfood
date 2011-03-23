@@ -52,6 +52,10 @@ ul.neighborhoods {
 	list-style-type: none;
 }
 
+ul.trucks {
+	list-style-type: none;
+}
+
 li.day {
 	border: 0px solid black;
 	padding-bottom: 10px;
@@ -78,6 +82,7 @@ li.no_stop {
 .footer {
 	color: gray;
 	text-align: center;
+	padding-top: 10px;
 }
 
 font.footer {

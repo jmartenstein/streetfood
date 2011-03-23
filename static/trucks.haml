@@ -1,7 +1,29 @@
-%head
+-# neighborhoods.haml
+-# Justin Martenstein - March, 2011
 
-%body
+!!! XML
+!!!
 
-	.main 
-		- Truck.all.each do |truck|
-			.truck_name #{truck.name}
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	%head
+		%title #{@page_text['title']}, #{@page_text['sub-title']}
+		%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+					
+	%body
+		=haml :header, :layout => false
+
+		.info
+			%strong.title Food Trucks
+
+		.main 
+			%ul.trucks
+				- Truck.all.each do |truck|
+					%li.truck
+						%a{ :href=>"truck/#{truck.name}" }= truck.name
+
+				%br
+				%li
+					%a{ :href=>"/" } browse by neighborhood
+
+		=haml :footer, :layout => false

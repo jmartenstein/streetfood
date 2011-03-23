@@ -22,4 +22,8 @@
 					%li.neighborhood
 						%a{ :href=>"neighborhood/#{hood.name}" }= hood.name
 
+				%br
+				%li 
+					%a{ :href=>"trucks" } browse by truck
+
 		=haml :footer, :layout => false
