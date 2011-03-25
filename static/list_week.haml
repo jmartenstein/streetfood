@@ -1,0 +1,32 @@
+-# list_week.haml
+-# Justin Martenstein, 2011
+
+-# this file is a partil for this_week.haml, next_week.haml and today.haml
+
+- (0 .. @num_days-1).each do |i|
+	%ul.days
+
+		- day = Date.strptime(@start_day) + i
+		- stops = Stop.by_date(day)
+
+		%li.date 
+
+			%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+			%ul.stops
+
+				- if (!stops.empty?)
+					- stops.each do |stop|
+						%li.stop
+							%font.stop-main>
+								%a{ :href=>"truck/#{stop.truck.name}" }>= stop.truck.name
+								,&nbsp; 
+								%a{ :href=>"neighborhood/#{stop.location.neighborhood.name}" }>= stop.location.neighborhood.name
+								, #{stop.hours}
+							%br
+							%font.stop-sub<
+								#{stop.location.name }
+								- if !stop.location.notes.nil?
+									(#{stop.location.notes})
+				- else
+					.no_stop No trucks today
+

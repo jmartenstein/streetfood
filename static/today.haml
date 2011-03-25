@@ -12,11 +12,11 @@
 	=haml :header, :layout => false
 
 	.info
-		%strong.title This Week
+		%strong.title Today
 
 	.main
 		-@start_day = Date.today.to_s
-		-@num_days = 7
+		-@num_days = 1
 		=haml :list_week, :layout => false
 
 	=haml :footer, :layout => false

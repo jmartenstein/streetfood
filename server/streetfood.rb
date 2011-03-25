@@ -26,9 +26,14 @@ get '/' do
    haml :neighborhoods
 end
 
-get '/this_week' do
+get '/neighborhoods' do
 	@page_text = page_text
-	haml :this_week
+   haml :neighborhoods
+end
+
+get '/trucks' do 
+	@page_text = page_text
+	haml :trucks
 end
 
 get '/truck/:truck_name' do | name |
@@ -37,13 +42,29 @@ get '/truck/:truck_name' do | name |
 	haml :truck	
 end
 
-get '/trucks' do 
-	@page_text = page_text
-	haml :trucks
-end
-
 get '/neighborhood/:neighborhood' do | hood |
 	@neighborhood = hood
 	@page_text = page_text
 	haml :neighborhood
+end
+
+get '/today' do
+	@page_text  = page_text
+	haml :today
+end
+
+get '/this_week' do
+	@page_text = page_text
+	haml :this_week
+end
+
+get '/next_week' do
+	@page_text = page_text
+	haml :next_week
+end
+
+get '/today\s:num' do | num |
+	@num = num
+	@page_text = page_text
+	haml :today
 end
