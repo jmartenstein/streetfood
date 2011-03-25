@@ -39,15 +39,22 @@
 	}
 	ul.stops {
 		list-style-type: none;
-		padding-top: 2px;
+		padding-top: 5px;
 	}
 	strong.date { 
-		padding-bottom: 15px;
+		color: black;
+		border: 0px black solid;
 	}
 	li.stop {
+		padding-bottom: 10px;
+	}
+	font.stop-sub {
+		font-size: 13px;
+		color: gray;
 	}
 	li.no-stop {
 		font-style: italic;
+		padding-bottom: 10px;
 	}
 	.footer {
 		color: gray;
@@ -77,8 +84,16 @@
 		<li class="day">
 			<strong class="date">Today (March 19th)</strong>
 			<ul class="stops">
-				<li class="stop">Marination, 36th and Pine, 11am-2pm</li>
-				<li class="stop">Skillet, 593th and Larry, 11am-2pm</li>
+				<li class="stop">
+					<font class="stop-main"><a href="">Marination</a>, 11am-2pm</font> 
+					<br/>
+					<font class="stop-sub">Starbucks HQ (2401 Utah Ave. S)</font>
+				</li>
+				<li class="stop">
+					<font class="stop-main"><a href="">Skillet</a>, 11am-2pm</font>
+					<br/>
+					<font class="stop-sub">9th and Cherry</font>
+				</li>
 			</ul>
 		</li>
 		<li class="day">
@@ -90,7 +105,11 @@
 		<li class="day">
 			<strong class="date">Monday (March 21st)</strong>
 			<ul class="stops">
-				<li class="stop">Street Treats, 36th and Pine, 11am-2pm</li>
+				<li class="stop">
+					<font class="stop-main"><a href="">Street Treats</a>, 11am-2pm</font> 
+					<br/>
+					<font class="stop-sub">Safeco Field (Edgar Martinez Dr. S & Occidental Ave. S)</font>
+				</li>
 			</ul>
 		</li>
 	</ul>
