@@ -15,7 +15,7 @@
 	-#	%strong.title This Week
 
 	.main
-		-@start_day = (Date.today + (7 * @num.to_i)).to_s
+		-@start_day = (Date.strptime("Monday", "%A") + (7 * @num.to_i)).to_s
 		-@num_days = 7
 		=haml :list_week, :layout => false
 
