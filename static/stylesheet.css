@@ -67,10 +67,19 @@ strong.date {
 
 ul.stops {
 	list-style-type: none;
-	padding-top: 2px;
+	padding-top: 5px;
 }
 
 li.stop {
+	padding-bottom: 10px;
+}
+
+font.stop-main {
+}
+
+font.stop-sub {
+	font-size: 13px;
+	color: gray;
 }
 
 li.no_stop {

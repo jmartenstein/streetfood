@@ -33,8 +33,14 @@
 						- if (!stops.empty?)
 							- stops.each do |stop|
 								%li.stop
-									%a{ :href => "../truck/#{stop.truck.name}" }>= stop.truck.name 
-									, #{stop.location.name}, #{stop.hours}
+									%font.stop-main
+										%a{ :href => "../truck/#{stop.truck.name}" }>= stop.truck.name 
+										, #{stop.hours}
+									%br
+									%font.stop-sub
+										#{stop.location.name} 
+										- if !stop.location.notes.nil?
+											(#{stop.location.notes})
 						- else
 							%li.no_stop 
 								No trucks today
