@@ -49,18 +49,15 @@ get '/neighborhood/:neighborhood' do | hood |
 end
 
 get '/today' do
+	@num = 0
 	@page_text  = page_text
 	haml :today
 end
 
 get '/this_week' do
+	@num = 0
 	@page_text = page_text
 	haml :this_week
-end
-
-get '/next_week' do
-	@page_text = page_text
-	haml :next_week
 end
 
 get '/today\s:num' do | num |
@@ -68,3 +65,11 @@ get '/today\s:num' do | num |
 	@page_text = page_text
 	haml :today
 end
+
+get '/this_week\s:num' do | num |
+	@num = num
+	@page_text = page_text
+	haml :this_week
+end
+
+

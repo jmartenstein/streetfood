@@ -11,8 +11,8 @@
 
 		%li.date 
 
-			%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-			%ul.stops
+			%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+			%ul.date-stops
 
 				- if (!stops.empty?)
 					- stops.each do |stop|
