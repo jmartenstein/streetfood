@@ -46,8 +46,6 @@
 						- else
 							%li.no_stop No trucks today
 
-		%br
-
-	%a{ :href => "../today" } Today
-
+	=haml :lower_nav, :layout => false
+	   
 	=haml :footer, :layout => false
