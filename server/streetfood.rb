@@ -23,7 +23,7 @@ page_text = {
 
 get '/' do
 	@page_text = page_text
-   haml :neighborhoods
+   haml :today
 end
 
 get '/neighborhoods' do
