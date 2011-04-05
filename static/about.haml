@@ -1,0 +1,49 @@
+- # this_week.haml
+- # Justin Martenstein - March, 2011
+
+%html{:xmlns => "http://www.w1.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+%head
+	%title #{@page_text['title']}, #{@page_text['sub-title']}
+	%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+
+%body
+
+	=haml :header, :layout => false
+
+	-#.info
+	-#	%strong.title Today
+
+	.main
+		%strong.title About
+
+		%ul.about
+			%li
+				%p> 
+					Lunch on Four Wheels is a Seattle street food directory, created by Justin Martenstein. 
+					It is built in Ruby, using the 
+					%a{ :href=>"http://www.sinatrarb.com/" } Sinatra 
+					web framework,
+					%a{ :href=>"http://haml-lang.com/" } Haml
+					markup language and a
+					%a{ :href=>"http://www.sqlite.org/" } SQLite 
+					back-end. 
+					You can take a look at the source over at the 
+					%a{ :href=>"https://github.com/jmartenstein/streetfood" } github repository
+					\. 
+					This site is still in it's early stages... please give feedback! 
+
+			%li
+			%li 
+				Twitter: 
+				%a{ :href=>"http://twitter.com/#!/lunchon4wheels" } @lunchon4wheels
+			%li 
+				Facebook: 
+				%a{ :href=>"http://www.facebook.com/pages/Seattle-WA/Lunch-on-Four-Wheels/189845471058647" } Lunch on Four Wheels
+			%li 
+				Email: 
+				%a{ :href=>"mailto:lunchonfourwheels@gmail.com" } lunchonfourwheels@gmail.com
+
+	=haml :lower_nav, :layout => false
+
+	=haml :footer, :layout => false

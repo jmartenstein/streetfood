@@ -13,11 +13,10 @@ set :public, File.dirname(__FILE__) + '/../static'
 
 page_text = {
 	'title' => 'Lunch on Four Wheels',
-	'sub-title' => 'a seattle streetfood directory',
+	'sub-title' => 'a seattle street food directory',
 	'footer-text' => '(c) Justin Martenstein, 2011',
 	'footer-links' => {
 		'about' => 'about',
-		'feedback' => 'feedback'
 	}
 }
 
@@ -72,4 +71,8 @@ get '/this_week\s:num' do | num |
 	haml :this_week
 end
 
+get '/about' do 
+	@page_text = page_text
+	haml :about
+end
 

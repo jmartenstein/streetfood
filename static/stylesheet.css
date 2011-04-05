@@ -119,6 +119,10 @@ li.lower_nav {
 	padding-top: 10px;
 }
 
+a.footer {
+	text-decoration: none;
+}
+
 font.footer {
 	font-size: 12px;
 }
