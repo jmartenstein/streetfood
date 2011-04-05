@@ -32,6 +32,10 @@ strong.site-name {
 	border-width: 0px;
 }*/
 
+a.title {
+	text-decoration: none;
+}
+
 strong.title {
 	font-size: 24px;
 }
@@ -93,6 +97,10 @@ font.stop-sub {
 li.no_stop {
 	font: italic;
 	color: black;
+}
+
+ul.about {
+	list-style-type: none;
 }
 
 ul.lower_nav {
