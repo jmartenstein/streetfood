@@ -5,7 +5,7 @@
 
 %head
 	%title Lunch on Four Wheels, a seattle street food directory
-	%link{:rel => "stylesheet", :href => "../stylesheet.css", :type => "text/css"}
+	%link{:rel => "stylesheet", :href => "#{@base_url}/stylesheet.css", :type => "text/css"}
 
 %body
 	=haml :header, :layout => false
@@ -34,7 +34,7 @@
 							- stops.each do |stop|
 								%li.stop
 									%font.stop-main
-										%a{ :href => "../truck/#{stop.truck.name}" }>= stop.truck.name 
+										%a{ :href => "#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name 
 										, #{stop.hours}
 									%br
 									%font.stop-sub

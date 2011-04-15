@@ -4,6 +4,6 @@
 		%br
 		- @page_text['footer-links'].each do |link|
 			\[ 
-			%a.footer{ :href=>"#{link[0]}" }>= link[1] 
+			%a.footer{ :href=>"#{@base_url}/#{link[0]}" }>= link[1] 
 			\]
 			

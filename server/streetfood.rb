@@ -11,68 +11,88 @@ require './model/location.rb'
 set :views, File.dirname(__FILE__) + '/../static'
 set :public, File.dirname(__FILE__) + '/../static'
 
-page_text = {
-	'title' => 'Lunch on Four Wheels',
-	'sub-title' => 'a seattle street food directory',
-	'footer-text' => '(c) Justin Martenstein, 2011',
-	'footer-links' => {
-		'about' => 'about',
-	}
-}
+#if (settings.environment = "development") {
+#	root_url = "http://localhost:4567"
+#}
+#else {
+#	root_url = "http://www.lunchonfourwheels.com"
+#}
+
+#root_url = "http://" + request.host + ":" + request.port
+
+helpers do
+ 	def base_url
+      @base_url ||= "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
+	end
+	def page_text
+		@page_text = {
+			'title' => 'Lunch on Four Wheels',
+			'sub-title' 		=> 'a seattle street food directory',
+			'footer-text' 		=> '(c) Justin Martenstein, 2011',
+			'footer-links' 	=> {
+				'about'	=> 'about',
+			}
+		}
+	end
+	def global_helper
+		base_url; page_text
+	end
+end
 
 get '/' do
-	@page_text = page_text
-   haml :today
+	global_helper
+	haml :today
 end
 
 get '/neighborhoods' do
-	@page_text = page_text
-   haml :neighborhoods
+	global_helper
+	haml :neighborhoods
 end
 
 get '/trucks' do 
-	@page_text = page_text
+	global_helper
 	haml :trucks
 end
 
 get '/truck/:truck_name' do | name |
 	@name = name
-	@page_text = page_text
+	global_helper
 	haml :truck	
 end
 
 get '/neighborhood/:neighborhood' do | hood |
 	@neighborhood = hood
-	@page_text = page_text
+	global_helper
 	haml :neighborhood
 end
 
 get '/today' do
 	@num = 0
-	@page_text  = page_text
+	@root_url = url
+	global_helper
 	haml :today
 end
 
 get '/this_week' do
 	@num = 0
-	@page_text = page_text
+	global_helper
 	haml :this_week
 end
 
 get '/today\s:num' do | num |
 	@num = num
-	@page_text = page_text
+	global_helper
 	haml :today
 end
 
 get '/this_week\s:num' do | num |
 	@num = num
-	@page_text = page_text
+	global_helper
 	haml :this_week
 end
 
 get '/about' do 
-	@page_text = page_text
+	global_helper
 	haml :about
 end
 

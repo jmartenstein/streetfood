@@ -2,14 +2,14 @@
 
 	%li.lower_nav
 		[ browse by 
-		%a{ :href => "../trucks" }< truck 
+		%a{ :href => "#{@base_url}/trucks" }< truck 
 		or 
-		%a{ :href => "../neighborhoods" }< neighborhood
+		%a{ :href => "#{@base_url}/neighborhoods" }< neighborhood
 		]
 
 	%li.lower_nav
 		[ show all listings for 
-		%a{ :href => "../today"}< today 
+		%a{ :href => "#{@base_url}/today"}< today 
 		or 
-		%a{ :href => "../this_week" }< this week
+		%a{ :href => "#{@base_url}/this_week" }< this week
 		]

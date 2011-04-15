@@ -8,7 +8,7 @@
 
 	%head
 		%title #{@page_text['title']}, #{@page_text['sub-title']} 
-		%link{:rel => "stylesheet", :href => "stylesheet.css", :type => "text/css"}
+		%link{:rel => "stylesheet", :href => "#{@base_url}/stylesheet.css", :type => "text/css"}
 
 	%body
 		=haml :header, :layout => false
@@ -20,10 +20,10 @@
 			%ul.neighborhoods
 				- Neighborhood.all.each do |hood|
 					%li.neighborhood
-						%a{ :href=>"neighborhood/#{hood.name}" }= hood.name
+						%a{ :href=>"#{@base_url}/neighborhood/#{hood.name}" }= hood.name
 
 				%br
 				%li 
-					%a{ :href=>"trucks" } browse by truck
+					%a{ :href=>"#{@base_url}/trucks" } browse by truck
 
 		=haml :footer, :layout => false
