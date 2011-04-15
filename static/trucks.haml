@@ -22,8 +22,6 @@
 					%li.truck
 						%a{ :href=>"#{@base_url}/truck/#{truck.name}" }= truck.name
 
-				%br
-				%li
-					%a{ :href=>"#{@base_url}/neighborhoods" } browse by neighborhood
+		=haml :lower_nav, :layout => false
 
 		=haml :footer, :layout => false

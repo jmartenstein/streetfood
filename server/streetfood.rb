@@ -68,7 +68,6 @@ end
 
 get '/today' do
 	@num = 0
-	@root_url = url
 	global_helper
 	haml :today
 end
