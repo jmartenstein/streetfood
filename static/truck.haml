@@ -1,51 +1,53 @@
+-# truck.haml
+
+!!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
-
-%head
-	%title Lunch on Four Wheels, a seattle street food directory
-	%link{:rel => "stylesheet", :href => "#{@base_url}/stylesheet.css", :type => "text/css"}
-
-%body
 
 	=haml :header, :layout => false
 
-	- # grab the truck and stop information here 
-	- truck = Truck.find_by_name(@name)
-	- # stops = Stop.where('truck_name like ?', @name)
+	%body
 
-	.info
-		/ display information about the truck
-		%a{ :href => "#{truck.website}" } 
-			%strong.truck #{truck.name} 
+		=haml :upper_nav, :layout => false
 
-	.main
+		- # grab the truck and stop information here 
+		- truck = Truck.find_by_name(@name)
+		- # stops = Stop.where('truck_name like ?', @name)
 
-		/ display information about the trucks upcoming stops
-		- (0 .. 3).each do |i|
-			%ul.days
+		.info
+			/ display information about the truck
+			%a{ :href => "#{truck.website}" } 
+				%strong.truck #{truck.name} 
 
-				-# grab the ruby date object
-				- day = Date.today + i
-				- stops = truck.stops.by_date(day)
+		.main
 
-				%li.date 
-					%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-					%ul.stops
+			/ display information about the trucks upcoming stops
+			- (0 .. 3).each do |i|
+				%ul.days
 
-						- if (!stops.empty?)
-							- stops.each do |stop|
-								%li.stop
-									%font.stop-main<
-										%a{ :href => "#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }< 
-											#{stop.location.neighborhood.name}
-										, #{stop.hours}
-									%br
-									%font.stop-sub<
-										#{stop.location.name} 
-										- if !stop.location.notes.nil?
-											(#{stop.location.notes})
-						- else
-							%li.no_stop No trucks today
+					/ grab the ruby date object
+					- day = Date.today + i
+					- stops = truck.stops.by_date(day)
 
-	=haml :lower_nav, :layout => false
-	   
-	=haml :footer, :layout => false
+					%li.date 
+						%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+						%ul.stops
+
+							- if (!stops.empty?)
+								- stops.each do |stop|
+									%li.stop
+										%font.stop-main<
+											%a{ :href => "#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }< 
+												#{stop.location.neighborhood.name}
+											, #{stop.hours}
+										%br
+										%font.stop-sub<
+											#{stop.location.name} 
+											- if !stop.location.notes.nil?
+												(#{stop.location.notes})
+							- else
+								%li.no_stop No trucks today
+
+		=haml :lower_nav, :layout => false
+			
+		=haml :footer, :layout => false
+

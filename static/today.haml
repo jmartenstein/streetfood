@@ -1,24 +1,23 @@
-- # this_week.haml
+- # today.haml
 - # Justin Martenstein - March, 2011
 
+!!!
 %html{:xmlns => "http://www.w1.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
-
-%head
-	%title #{@page_text['title']}, #{@page_text['sub-title']}
-	%link{:rel => "stylesheet", :href => "#{@base_url}/stylesheet.css", :type => "text/css"}
-
-%body
 
 	=haml :header, :layout => false
 
-	-#.info
-	-#	%strong.title Today
+	%body
 
-	.main
-		-@start_day = (Date.today + @num.to_i).to_s
-		-@num_days = 1
-		=haml :list_week, :layout => false
+		=haml :upper_nav, :layout => false
 
-	=haml :lower_nav, :layout => false
+		-#.info
+		-#	%strong.title Today
 
-	=haml :footer, :layout => false
+		.main
+			-@start_day = (Date.today + @num.to_i).to_s
+			-@num_days = 1
+			=haml :list_week, :layout => false
+
+		=haml :lower_nav, :layout => false
+
+		=haml :footer, :layout => false

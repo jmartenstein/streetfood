@@ -1,51 +1,50 @@
 - # neighborhood.haml
 - # Justin Martenstein - March, 2011
 
-%html{:xmlns => "http://www.w1.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
 
-%head
-	%title Lunch on Four Wheels, a seattle street food directory
-	%link{:rel => "stylesheet", :href => "#{@base_url}/stylesheet.css", :type => "text/css"}
-
-%body
 	=haml :header, :layout => false
 
-	- # get the neighborhood object
-	- hood = Neighborhood.find_by_name(@neighborhood)
+	%body
+		=haml :upper_nav, :layout => false
 
-	.info
-		%strong.neighborhood #{hood.name}
+		- # get the neighborhood object
+		- hood = Neighborhood.find_by_name(@neighborhood)
 
-	.main
-		- (0..3).each do |i|
-			%ul.days
+		.info
+			%strong.neighborhood #{hood.name}
 
-				-# grab the ruby objects 
-				- day = Date.today + i
-				- stops = hood.stops.by_date(day)
+		.main
+			- (0..3).each do |i|
+				%ul.days
 
-				%li.date
+					-# grab the ruby objects 
+					- day = Date.today + i
+					- stops = hood.stops.by_date(day)
 
-					-# display information
-					%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-					%ul.stops
+					%li.date
 
-						- if (!stops.empty?)
-							- stops.each do |stop|
-								%li.stop
-									%font.stop-main
-										%a{ :href => "#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name 
-										, #{stop.hours}
-									%br
-									%font.stop-sub
-										#{stop.location.name} 
-										- if !stop.location.notes.nil?
-											(#{stop.location.notes})
-						- else
-							%li.no_stop 
-								No trucks today
+						-# display information
+						%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+						%ul.stops
 
-	=haml :lower_nav, :layout => false
+							- if (!stops.empty?)
+								- stops.each do |stop|
+									%li.stop
+										%font.stop-main
+											%a{ :href => "#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name 
+											, #{stop.hours}
+										%br
+										%font.stop-sub
+											#{stop.location.name} 
+											- if !stop.location.notes.nil?
+												(#{stop.location.notes})
+							- else
+								%li.no_stop 
+									No trucks today
 
-	=haml :footer, :layout => false
+		=haml :lower_nav, :layout => false
+
+		=haml :footer, :layout => false
 
