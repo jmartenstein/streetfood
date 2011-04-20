@@ -84,6 +84,10 @@ get '/today\s:num' do | num |
 	haml :today
 end
 
+get '/tomorrow' do 
+	redirect '/today+1'
+end
+
 get '/this_week\s:num' do | num |
 	@num = num
 	global_helper
