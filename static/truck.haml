@@ -33,41 +33,13 @@
 					%a{ :href => "http://www.yelp.com/biz/#{truck.yelp}" } yelp
 
 			.food
-				Food:
+				Foods:
 				- truck.foods.each do |food|
 					#{food.name}
 
 		.main
-
-			-# set a counter, so we know if there are any stops
-			- j = 0
-
-			/ display information about the trucks upcoming stops
-			- (0 .. 6).each do |i|
-				%ul.days
-
-					/ grab the ruby date object
-					- day = Date.today + i
-					- @stops = truck.stops.by_date(day)
-
-					- if (!@stops.empty?)
-
-						-# increment the counter every time we find a stop
-						- j = j + 1
-
-						-# list the date
-						%li.date 
-							%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-
-							- @start_day = day.to_s; @pivot = "truck"
-							=haml :list_stops, :layout => false
-
-			-# If the truck has no stops, list a message
-			- if (j == 0)
-				%ul.stops
-					%li
-						No stops currently scheduled
-				%br
+			- @object = truck
+			=haml :list_days, :layout => false
 
 		=haml :lower_nav, :layout => false
 			

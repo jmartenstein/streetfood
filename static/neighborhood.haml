@@ -16,37 +16,8 @@
 			%strong.neighborhood #{hood.name}
 
 		.main
-	
-			-# set a counter, to keep track of how many stops
-			- j = 0
-
-			- (0 .. 6).each do |i|
-				%ul.days
-
-					-# grab the ruby objects 
-					- day = Date.today + i
-					- @stops = hood.stops.by_date(day)
-
-					- if (!@stops.empty?)
-
-						-# incerment the counter each time we find a stop
-						- j = j + 1
-
-						%li.date
-
-							-# display information
-							%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-
-							- @start_day = day.to_s; @pivot = "neighborhood"
-							=haml :list_stops, :layout => false
-
-			-# If the truck has no stops, list a message
-			- if (j == 0)
-				%ul.stops
-					%li
-						No stops currently scheduled
-				%br
-
+			- @object = hood
+			=haml :list_days, :layout => false
 
 		=haml :lower_nav, :layout => false
 

@@ -3,37 +3,36 @@
 
 -# this file is a partial for this_week.haml and today.haml
 
--# day = Date.strptime(@start_day)
-
--# if (@pivot == "truck")
-	-# truck = Truck.find_by_name(@id)
-	-# stops = truck.stops.by_date(day)
--# elsif (@pivot == "neighborhood")
-	-# neighborhood = Neighborhood.find_by_name(@id)
-	-# stops = neighborhood.stops.by_date(day)
--# else
-	-# stops = Stop.by_date(day)
-
--# %strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-
 %ul.stops
 
 	- @stops.each do |stop|
-		%li.stop
-			%font.stop-main>
+		%li.stop<
+			%font.stop-main<
 
 				-# check to see if we're only displaying neighborhood info
 				- if (@pivot != "truck")
 					%a{ :href=>"#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name
-					,&nbsp; 
+					,
+
+				-# if we're displaying both truck and neighborhood, then make
+				-# sure we put a space between the two
+				- if (@pivot != "neighborhood" && @pivot != "truck")
+					&nbsp;
 
 				-# check if we're only displaying truck info
 				- if (@pivot != "neighborhood")
 					%a{ :href=>"#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }>= stop.location.neighborhood.name
-				, #{stop.hours}
+					,
+
+				-# if we're displaying both truck and neighborhood, then make
+				-# sure we put a space between the two
+				-# if (@pivot != "neighborhood" && @pivot != "truck")
+				-#	&nbsp;
+
+				#{stop.hours}
 
 			%br
-			%font.stop-sub<
+			%font.stop-sub>
 				#{stop.location.name }
 				- if !stop.location.notes.nil?
 					(#{stop.location.notes})
