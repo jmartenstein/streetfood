@@ -17,9 +17,8 @@
 			%strong.title #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
 		.main
-			-@start_day = (Date.today + @num.to_i).to_s
-			-@num_days = 1
-			=haml :list_week, :layout => false
+			-@start_day = day.to_s; @num_days = 1
+			=haml :list_stops, :layout => false
 
 		=haml :lower_nav, :layout => false
 

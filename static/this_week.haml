@@ -24,7 +24,7 @@
 				- day = Date.strptime(@start_day)
 				%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
-				=haml :list_week, :layout => false
+				=haml :list_stops, :layout => false
 
 		=haml :lower_nav, :layout => false
 
