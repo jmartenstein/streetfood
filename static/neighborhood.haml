@@ -16,6 +16,10 @@
 			%strong.neighborhood #{hood.name}
 
 		.main
+	
+			-# set a counter, to keep track of how many stops
+			- j = 0
+
 			- (0 .. 6).each do |i|
 				%ul.days
 
@@ -23,13 +27,17 @@
 					- day = Date.today + i
 					- stops = hood.stops.by_date(day)
 
-					%li.date
+					- if (!stops.empty?)
 
-						-# display information
-						%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-						%ul.stops
+						-# incerment the counter each time we find a stop
+						- j = j + 1
 
-							- if (!stops.empty?)
+						%li.date
+
+							-# display information
+							%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+							%ul.stops
+
 								- stops.each do |stop|
 									%li.stop
 										%font.stop-main
@@ -40,9 +48,14 @@
 											#{stop.location.name} 
 											- if !stop.location.notes.nil?
 												(#{stop.location.notes})
-							- else
-								%li.no_stop 
-									No trucks today
+
+			-# If the truck has no stops, list a message
+			- if (j == 0)
+				%ul.stops
+					%li
+						No stops currently scheduled
+				%br
+
 
 		=haml :lower_nav, :layout => false
 
