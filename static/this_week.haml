@@ -14,9 +14,17 @@
 		-#	%strong.title This Week
 
 		.main
-			-@start_day = (Date.strptime("Monday", "%A") + (7 * @num.to_i)).to_s
-			-@num_days = 7
-			=haml :list_week, :layout => false
+
+			- (0 .. 6).each do |i|
+
+				-# set @num_days equal to one now, when we're calling list_week
+				- @start_day = (Date.strptime("Monday", "%A") + (7 * @num.to_i) + i).to_s
+				- @num_days = 1
+
+				- day = Date.strptime(@start_day)
+				%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+
+				=haml :list_week, :layout => false
 
 		=haml :lower_nav, :layout => false
 

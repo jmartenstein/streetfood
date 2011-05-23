@@ -1,17 +1,18 @@
-%ul.lower_nav
+-# lower_nav.haml
+-# the lower navigation section of each page
 
-	%li.lower_nav
-		[ browse by 
-		%a{ :href => "#{@base_url}/trucks" }< truck 
-		or 
-		%a{ :href => "#{@base_url}/neighborhoods" }< neighborhood
-		]
+.lower_nav
+	[ browse by 
+	%a{ :href => "#{@base_url}/trucks" }< truck 
+	or 
+	%a{ :href => "#{@base_url}/neighborhoods" }< neighborhood
+	]
 
-	%li.lower_nav
-		[ show all listings for 
-		%a{ :href => "#{@base_url}/today"}< today 
-		, 
-		%a{ :href => "#{@base_url}/tomorrow"}< tomorrow
-		or 
-		%a{ :href => "#{@base_url}/this_week" }< this week
-		]
+.lower_nav
+	[ show all listings for 
+	%a{ :href => "#{@base_url}/today"}< today 
+	, 
+	%a{ :href => "#{@base_url}/tomorrow"}< tomorrow
+	or 
+	%a{ :href => "#{@base_url}/this_week" }< this week
+	]

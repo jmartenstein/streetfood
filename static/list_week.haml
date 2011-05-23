@@ -4,29 +4,27 @@
 -# this file is a partial for this_week.haml, next_week.haml and today.haml
 
 - (0 .. @num_days-1).each do |i|
-	%ul.days
 
-		- day = Date.strptime(@start_day) + i
-		- stops = Stop.by_date(day)
+	- day = Date.strptime(@start_day) + i
+	- stops = Stop.by_date(day)
 
-		%li.date 
+	-# %strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
-			%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-			%ul.date-stops
+	%ul.stops
 
-				- if (!stops.empty?)
-					- stops.each do |stop|
-						%li.stop
-							%font.stop-main>
-								%a{ :href=>"#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name
-								,&nbsp; 
-								%a{ :href=>"#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }>= stop.location.neighborhood.name
-								, #{stop.hours}
-							%br
-							%font.stop-sub<
-								#{stop.location.name }
-								- if !stop.location.notes.nil?
-									(#{stop.location.notes})
-				- else
-					.no_stop No trucks today
+		- if (!stops.empty?)
+			- stops.each do |stop|
+				%li.stop
+					%font.stop-main>
+						%a{ :href=>"#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name
+						,&nbsp; 
+						%a{ :href=>"#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }>= stop.location.neighborhood.name
+						, #{stop.hours}
+					%br
+					%font.stop-sub<
+						#{stop.location.name }
+						- if !stop.location.notes.nil?
+							(#{stop.location.notes})
+		- else
+			.no_stop No trucks today
 

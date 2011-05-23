@@ -10,8 +10,11 @@
 
 		=haml :upper_nav, :layout => false
 
-		-#.info
-		-#	%strong.title Today
+		-# load today's date into a variable, then display it
+		-# inside an "info" div
+		- day = Date.today + @num.to_i
+		.info
+			%strong.title #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
 		.main
 			-@start_day = (Date.today + @num.to_i).to_s
