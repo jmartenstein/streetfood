@@ -17,7 +17,8 @@
 			%strong.title #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
 		.main
-			-@start_day = day.to_s; @num_days = 1
+			-@start_day = day.to_s; @pivot = "none"
+			-@stops = Stop.by_date(day)
 			=haml :list_stops, :layout => false
 
 		=haml :lower_nav, :layout => false

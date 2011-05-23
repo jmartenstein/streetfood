@@ -25,9 +25,9 @@
 
 					-# grab the ruby objects 
 					- day = Date.today + i
-					- stops = hood.stops.by_date(day)
+					- @stops = hood.stops.by_date(day)
 
-					- if (!stops.empty?)
+					- if (!@stops.empty?)
 
 						-# incerment the counter each time we find a stop
 						- j = j + 1
@@ -36,18 +36,9 @@
 
 							-# display information
 							%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-							%ul.stops
 
-								- stops.each do |stop|
-									%li.stop
-										%font.stop-main
-											%a{ :href => "#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name 
-											, #{stop.hours}
-										%br
-										%font.stop-sub
-											#{stop.location.name} 
-											- if !stop.location.notes.nil?
-												(#{stop.location.notes})
+							- @start_day = day.to_s; @pivot = "neighborhood"
+							=haml :list_stops, :layout => false
 
 			-# If the truck has no stops, list a message
 			- if (j == 0)

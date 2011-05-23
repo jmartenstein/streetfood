@@ -48,9 +48,9 @@
 
 					/ grab the ruby date object
 					- day = Date.today + i
-					- stops = truck.stops.by_date(day)
+					- @stops = truck.stops.by_date(day)
 
-					- if (!stops.empty?)
+					- if (!@stops.empty?)
 
 						-# increment the counter every time we find a stop
 						- j = j + 1
@@ -58,20 +58,9 @@
 						-# list the date
 						%li.date 
 							%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-						%ul.stops
 
-							- stops.each do |stop|
-								%li.stop
-									%font.stop-main<
-										%a{ :href => "#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }< 
-											#{stop.location.neighborhood.name}
-										, #{stop.hours}
-									%br
-									%font.stop-sub<
-										#{stop.location.name} 
-										- if !stop.location.notes.nil?
-											(#{stop.location.notes})
-
+							- @start_day = day.to_s; @pivot = "truck"
+							=haml :list_stops, :layout => false
 
 			-# If the truck has no stops, list a message
 			- if (j == 0)
