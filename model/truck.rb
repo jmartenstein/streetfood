@@ -8,6 +8,8 @@ require 'logger'
 require 'date'
 require 'csv'
 
+require './model/food.rb'
+
 # set our logging options
 ActiveRecord::Base.logger = Logger.new(STDERR)
 #ActiveRecord::Base.colorize_logging = false
