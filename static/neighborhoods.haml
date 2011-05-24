@@ -1,23 +1,12 @@
 -# neighborhoods.haml
 -# Justin Martenstein - March, 2011
 
-!!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+.info
+	%strong.title Neighborhoods
 
-	=haml :header, :layout => false
+.main
+	%ul.neighborhoods
+		- Neighborhood.all.each do |hood|
+			%li.neighborhood
+				%a{ :href=>"#{@base_url}/neighborhood/#{hood.name}" }= hood.name
 
-	%body
-		=haml :upper_nav, :layout => false
-		
-		.info
-			%strong.title Neighborhoods
-
-		.main
-			%ul.neighborhoods
-				- Neighborhood.all.each do |hood|
-					%li.neighborhood
-						%a{ :href=>"#{@base_url}/neighborhood/#{hood.name}" }= hood.name
-
-		=haml :lower_nav, :layout => false
-	
-		=haml :footer, :layout => false

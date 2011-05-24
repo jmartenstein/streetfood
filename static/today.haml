@@ -1,26 +1,14 @@
 - # today.haml
 - # Justin Martenstein - March, 2011
 
-!!!
-%html{:xmlns => "http://www.w1.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+-# load today's date into a variable, then display it
+-# inside an "info" div
+- day = Date.today + @num.to_i
+.info
+	%strong.title #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
-	=haml :header, :layout => false
+.main
+	-@start_day = day.to_s; @pivot = "none"
+	-@stops = Stop.by_date(day)
+	=haml :list_stops, :layout => false
 
-	%body
-
-		=haml :upper_nav, :layout => false
-
-		-# load today's date into a variable, then display it
-		-# inside an "info" div
-		- day = Date.today + @num.to_i
-		.info
-			%strong.title #{day.strftime("%A, %B #{day.day.ordinalize}")}
-
-		.main
-			-@start_day = day.to_s; @pivot = "none"
-			-@stops = Stop.by_date(day)
-			=haml :list_stops, :layout => false
-
-		=haml :lower_nav, :layout => false
-
-		=haml :footer, :layout => false

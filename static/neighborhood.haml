@@ -1,25 +1,13 @@
 - # neighborhood.haml
 - # Justin Martenstein - March, 2011
 
-!!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+- # get the neighborhood object
+- hood = Neighborhood.find_by_name(@neighborhood)
 
-	=haml :header, :layout => false
+.info
+	%strong.neighborhood #{hood.name}
 
-	%body
-		=haml :upper_nav, :layout => false
-
-		- # get the neighborhood object
-		- hood = Neighborhood.find_by_name(@neighborhood)
-
-		.info
-			%strong.neighborhood #{hood.name}
-
-		.main
-			- @object = hood
-			=haml :list_days, :layout => false
-
-		=haml :lower_nav, :layout => false
-
-		=haml :footer, :layout => false
+.main
+	- @object = hood
+	=haml :list_days, :layout => false
 

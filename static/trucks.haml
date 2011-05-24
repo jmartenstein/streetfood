@@ -1,26 +1,12 @@
 -# neighborhoods.haml
 -# Justin Martenstein - March, 2011
 
-!!! XML
-!!!
+.info
+	%strong.title Food Trucks
 
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+.main 
+	%ul.trucks
+		- Truck.all.each do |truck|
+			%li.truck
+				%a{ :href=>"#{@base_url}/truck/#{truck.name}" }= truck.name
 
-	=haml :header, :layout => false
-
-	%body
-
-		=haml :upper_nav, :layout => false
-
-		.info
-			%strong.title Food Trucks
-
-		.main 
-			%ul.trucks
-				- Truck.all.each do |truck|
-					%li.truck
-						%a{ :href=>"#{@base_url}/truck/#{truck.name}" }= truck.name
-
-		=haml :lower_nav, :layout => false
-
-		=haml :footer, :layout => false

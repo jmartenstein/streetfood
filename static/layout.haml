@@ -1,0 +1,16 @@
+-# layout file for Haml / Sinatra
+-# Justin Martenstein - May, 2011
+
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+
+	=haml :header, :layout => false
+
+	%body
+		=haml :upper_nav, :layout => false
+
+		=yield
+
+		=haml :lower_nav, :layout => false
+			
+		=haml :footer, :layout => false

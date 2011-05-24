@@ -1,53 +1,41 @@
 - # this_week.haml
 - # Justin Martenstein - March, 2011
 
-=haml :header, :layout => false
+.main
+	%strong.title About
 
-%body
+	%ul.about
+		%li
+			%p> 
+				Lunch on Four Wheels is a Seattle street food directory, created by Justin Martenstein. 
+				It is built in Ruby, using the 
+				%a{ :href=>"http://www.sinatrarb.com/" } Sinatra 
+				web framework,
+				%a{ :href=>"http://haml-lang.com/" } Haml
+				markup language and a
+				%a{ :href=>"http://www.sqlite.org/" } SQLite 
+				back-end. 
+				You can take a look at the source over at the 
+				%a{ :href=>"https://github.com/jmartenstein/streetfood" } github repository
+				\. 
+				This site is still in its early stages... please give feedback! 
 
-	=haml :upper_nav, :layout => false
+		%li
+		%li 
+			Twitter: 
+			%a{ :href=>"http://twitter.com/#!/lunchon4wheels" } @lunchon4wheels
+		%li 
+			Facebook: 
+			%a{ :href=>"http://www.facebook.com/pages/Seattle-WA/Lunch-on-Four-Wheels/189845471058647" } Lunch on Four Wheels
+		%li 
+			Email: 
+			%a{ :href=>"mailto:lunchonfourwheels@gmail.com" } lunchonfourwheels@gmail.com
 
-	-#.info
-	-#	%strong.title Today
+		%li 
+			%br
+		%li
+			"I get antsy when I realize I'm consuming more than I create." 
+			%br
+			&nbsp; &nbsp; --
+			%a{ :href=>"http://health.tommusic.net/" } Tom Music
 
-	.main
-		%strong.title About
-
-		%ul.about
-			%li
-				%p> 
-					Lunch on Four Wheels is a Seattle street food directory, created by Justin Martenstein. 
-					It is built in Ruby, using the 
-					%a{ :href=>"http://www.sinatrarb.com/" } Sinatra 
-					web framework,
-					%a{ :href=>"http://haml-lang.com/" } Haml
-					markup language and a
-					%a{ :href=>"http://www.sqlite.org/" } SQLite 
-					back-end. 
-					You can take a look at the source over at the 
-					%a{ :href=>"https://github.com/jmartenstein/streetfood" } github repository
-					\. 
-					This site is still in its early stages... please give feedback! 
-
-			%li
-			%li 
-				Twitter: 
-				%a{ :href=>"http://twitter.com/#!/lunchon4wheels" } @lunchon4wheels
-			%li 
-				Facebook: 
-				%a{ :href=>"http://www.facebook.com/pages/Seattle-WA/Lunch-on-Four-Wheels/189845471058647" } Lunch on Four Wheels
-			%li 
-				Email: 
-				%a{ :href=>"mailto:lunchonfourwheels@gmail.com" } lunchonfourwheels@gmail.com
-
-			%li 
-				%br
-			%li
-				"I get antsy when I realize I'm consuming more than I create." 
-				%br
-				&nbsp; &nbsp; --
-				%a{ :href=>"http://health.tommusic.net/" } Tom Music
-
-	=haml :lower_nav, :layout => false
-
-	=haml :footer, :layout => false

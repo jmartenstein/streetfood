@@ -1,31 +1,16 @@
 - # this_week.haml
 - # Justin Martenstein - March, 2011
 
-!!!
-%html{:xmlns => "http://www.w1.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+.main
 
-	=haml :header, :layout => false
+	- (0 .. 6).each do |i|
 
-	%body
+		-# set @num_days equal to one now, when we're calling list_week
+		- day = (Date.strptime("Monday", "%A") + (7 * @num.to_i) + i)
+		- @start_day = day.to_s; @pivot = "none"
+		- @stops = Stop.by_date(day)
 
-		=haml :upper_nav, :layout => false
+		%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
-		-#.info
-		-#	%strong.title This Week
+		=haml :list_stops, :layout => false
 
-		.main
-
-			- (0 .. 6).each do |i|
-
-				-# set @num_days equal to one now, when we're calling list_week
-				- day = (Date.strptime("Monday", "%A") + (7 * @num.to_i) + i)
-				- @start_day = day.to_s; @pivot = "none"
-				- @stops = Stop.by_date(day)
-
-				%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
-
-				=haml :list_stops, :layout => false
-
-		=haml :lower_nav, :layout => false
-
-		=haml :footer, :layout => false
