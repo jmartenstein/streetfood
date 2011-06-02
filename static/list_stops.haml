@@ -2,25 +2,26 @@
 -# Justin Martenstein, 2011
 
 -# this file is a partial for this_week.haml and today.haml
-
 %ul.stops
+
+	- pivot = @object.class.to_s.downcase
 
 	- @stops.each do |stop|
 		%li.stop<
 			%font.stop-main<
 
 				-# check to see if we're only displaying neighborhood info
-				- if (@pivot != "truck")
+				- if (pivot != "truck")
 					%a{ :href=>"#{@base_url}/truck/#{stop.truck.name}" }>= stop.truck.name
 					,
 
 				-# if we're displaying both truck and neighborhood, then make
 				-# sure we put a space between the two
-				- if (@pivot != "neighborhood" && @pivot != "truck")
+				- if (pivot != "neighborhood" && @pivot != "truck")
 					&nbsp;
 
 				-# check if we're only displaying truck info
-				- if (@pivot != "neighborhood")
+				- if (pivot != "neighborhood")
 					%a{ :href=>"#{@base_url}/neighborhood/#{stop.location.neighborhood.name}" }>= stop.location.neighborhood.name
 					,
 

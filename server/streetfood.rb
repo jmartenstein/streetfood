@@ -22,7 +22,7 @@ set :public, File.dirname(__FILE__) + '/../static'
 
 helpers do
  	def base_url
-      @base_url ||= "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
+		@base_url ||= "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
 	end
 	def page_text
 		@page_text = {
@@ -55,7 +55,8 @@ get '/trucks' do
 end
 
 get '/truck/:truck_name' do | name |
-	@name = name
+	@truck = Truck.find_by_name(name)
+	@object = @truck
 	global_helper
 	haml :truck	
 end

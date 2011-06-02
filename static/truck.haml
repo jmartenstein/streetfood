@@ -1,35 +1,30 @@
 -# truck.haml
 -# Justin Martenstein - May, 2011
 
-- # grab the truck and stop information here 
-- truck = Truck.find_by_name(@name)
-- # stops = Stop.where('truck_name like ?', @name)
-
 .info
 	/ display information about the truck
-	%strong.truck #{truck.name} 
+	%strong.truck #{@truck.name} 
 
 	%br
 
 	.externals
-		- if (!truck.website.nil?)
-			%a{ :href => "#{truck.website}" } website
+		- if (!@truck.website.nil?)
+			%a{ :href => "#{@truck.website}" } website
 			&nbsp;	
-		- if (!truck.twitter.nil?)
-			%a{ :href => "http://www.twitter.com/#{truck.twitter}" } twitter
+		- if (!@truck.twitter.nil?)
+			%a{ :href => "http://www.twitter.com/#{@truck.twitter}" } twitter
 			&nbsp;
-		- if (!truck.facebook.nil?)
-			%a{ :href => "#{truck.facebook}" } facebook
+		- if (!@truck.facebook.nil?)
+			%a{ :href => "#{@truck.facebook}" } facebook
 			&nbsp;
-		- if (!truck.yelp.nil?)
-			%a{ :href => "http://www.yelp.com/biz/#{truck.yelp}" } yelp
+		- if (!@truck.yelp.nil?)
+			%a{ :href => "http://www.yelp.com/biz/#{@truck.yelp}" } yelp
 
 	.food
 		Foods:
-		- truck.foods.each do |food|
+		- @truck.foods.each do |food|
 			#{food.name}
 
 .main
-	- @object = truck
-			=haml :list_days, :layout => false
+	=haml :list_days, :layout => false
 
