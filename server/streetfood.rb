@@ -67,7 +67,9 @@ get '/neighborhood/:neighborhood' do | hood |
 end
 
 get '/today' do
-   @num = 0
+   @day = Date.today
+   unsorted_stops = Stop.by_date(@day)
+   @stops = unsorted_stops.sort_by{ |a| [ a.location.neighborhood.distance, a.location.neighborhood.name, a.location.name ] }
    haml :today
 end
 
@@ -77,7 +79,9 @@ get '/this_week' do
 end
 
 get '/today\s:num' do | num |
-   @num = num
+   @day = Date.today + num.to_i
+   unsorted_stops = Stop.by_date(@day)
+   @stops = unsorted_stops.sort_by{ |a| [ a.location.neighborhood.distance, a.location.neighborhood.name ] }
    haml :today
 end
 

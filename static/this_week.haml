@@ -7,8 +7,8 @@
 
       -# set @num_days equal to one now, when we're calling list_week
       - day = (Date.strptime("Monday", "%A") + (7 * @num.to_i) + i)
-      - @start_day = day.to_s; @pivot = "none"
-      - @stops = Stop.by_date(day)
+      - unsorted_stops = Stop.by_date(day)
+      - @stops = unsorted_stops.sort_by { |a| [ a.location.neighborhood.distance, a.location.neighborhood.name ] }
 
       %strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
