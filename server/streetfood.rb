@@ -44,7 +44,7 @@ before do
 end
 
 get '/' do
-   haml :today
+   redirect '/today'
 end
 
 get '/neighborhoods' do
