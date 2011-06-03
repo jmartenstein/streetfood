@@ -39,7 +39,6 @@ end
 def self.import
 
    CSV.foreach("./data/neighborhoods.csv") do | line |
-      puts "name: #{line[0]}, distance: #{line[1]}"
       record = self.create(
          :name       => line[0],
          :distance   => line[1]
