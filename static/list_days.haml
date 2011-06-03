@@ -6,28 +6,28 @@
 
 / display information about the trucks upcoming stops
 - (0 .. 6).each do |i|
-	%ul.days
+   %ul.days
 
-		/ grab the ruby date object
-		- day = Date.today + i
-		- @stops = @object.stops.by_date(day)
+      / grab the ruby date object
+      - day = Date.today + i
+      - @stops = @object.stops.by_date(day)
 
-		- if (!@stops.empty?)
+      - if (!@stops.empty?)
 
-			-# increment the counter every time we find a stop
-			- j = j + 1
+         -# increment the counter every time we find a stop
+         - j = j + 1
 
-			-# list the date
-			%li.date 
-				%strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+         -# list the date
+         %li.date 
+            %strong.date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
-				- @start_day = day.to_s
-				=haml :list_stops, :layout => false
+            - @start_day = day.to_s
+            =haml :list_stops, :layout => false
 
 -# If the truck has no stops, list a message
 - if (j == 0)
-	%ul.stops
-		%li
-			No stops currently scheduled
-	%br
+   %ul.stops
+      %li
+         No stops currently scheduled
+   %br
 
