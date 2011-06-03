@@ -3,14 +3,14 @@
 
 .main
 
-	- (0 .. 6).each do |i|
+   - (0 .. 6).each do |i|
 
-		-# set @num_days equal to one now, when we're calling list_week
-		- day = (Date.strptime("Monday", "%A") + (7 * @num.to_i) + i)
-		- @start_day = day.to_s; @pivot = "none"
-		- @stops = Stop.by_date(day)
+      -# set @num_days equal to one now, when we're calling list_week
+      - day = (Date.strptime("Monday", "%A") + (7 * @num.to_i) + i)
+      - @start_day = day.to_s; @pivot = "none"
+      - @stops = Stop.by_date(day)
 
-		%strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
+      %strong.list-date #{day.strftime("%A, %B #{day.day.ordinalize}")}
 
-		=haml :list_stops, :layout => false
+      =haml :list_stops, :layout => false
 
