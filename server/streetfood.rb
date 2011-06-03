@@ -39,49 +39,45 @@ helpers do
    end
 end
 
-get '/' do
+before do
    global_helper
+end
+
+get '/' do
    haml :today
 end
 
 get '/neighborhoods' do
-   global_helper
    haml :neighborhoods
 end
 
 get '/trucks' do 
-   global_helper
    haml :trucks
 end
 
 get '/truck/:truck_name' do | name |
    @truck = Truck.find_by_name(name)
    @object = @truck
-   global_helper
    haml :truck	
 end
 
 get '/neighborhood/:neighborhood' do | hood |
    @neighborhood = hood
-   global_helper
    haml :neighborhood
 end
 
 get '/today' do
    @num = 0
-   global_helper
    haml :today
 end
 
 get '/this_week' do
    @num = 0
-   global_helper
    haml :this_week
 end
 
 get '/today\s:num' do | num |
    @num = num
-   global_helper
    haml :today
 end
 
@@ -91,12 +87,10 @@ end
 
 get '/this_week\s:num' do | num |
    @num = num
-   global_helper
    haml :this_week
 end
 
 get '/about' do 
-   global_helper
    haml :about
 end
 
