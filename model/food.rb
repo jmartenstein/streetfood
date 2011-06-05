@@ -14,35 +14,35 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 # create the connection to our database
 dbconfig = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection(
-	dbconfig['production']
+   dbconfig['production']
 )
 
 class Food < ActiveRecord::Base
-	has_and_belongs_to_many :trucks
+   has_and_belongs_to_many :trucks
 
 def self.up
 
-	ActiveRecord::Schema.define do
-		create_table :foods do | table |
-			table.string :name
-		end
-	end
+   ActiveRecord::Schema.define do
+      create_table :foods do | table |
+         table.string :name
+      end
+   end
 
 end  # self.up
 
 def self.down
-	ActiveRecord::Schema.drop_table :foods
+   ActiveRecord::Schema.drop_table :foods
 end  # self.down
 
 def self.import
 
-	CSV.foreach("./data/foods.csv") do | line |
+   CSV.foreach("./data/foods.csv") do | line |
 
-		record = self.create(
-			:name => line[0]
-		)
+      record = self.create(
+         :name => line[0]
+      )
 
-	end  # CSV.foreach
+   end  # CSV.foreach
 
 end  # self.import
 

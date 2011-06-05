@@ -17,45 +17,45 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 # create the connection to our database
 dbconfig = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection(
-	dbconfig['production']
+   dbconfig['production']
 )
 
 class Truck < ActiveRecord::Base
-	has_many :stops
-	has_and_belongs_to_many :foods
+   has_many :stops
+   has_and_belongs_to_many :foods
 
 def self.up
 
-	# define the table schema, and create it
-	ActiveRecord::Schema.define do
-		create_table :trucks do | table |
-			table.column :name,			:string
-			table.column :website, 		:string
-			table.column :twitter,		:string
-			table.column :facebook,		:string
-			table.column :yelp,			:string
-		end
-	end
+   # define the table schema, and create it
+   ActiveRecord::Schema.define do
+      create_table :trucks do | table |
+         table.column :name,        :string
+         table.column :website,     :string
+         table.column :twitter,     :string
+         table.column :facebook,    :string
+         table.column :yelp,        :string
+      end
+   end
 
 end  # self.up
 
 def self.down
-	ActiveRecord::Schema.drop_table :trucks
+   ActiveRecord::Schema.drop_table :trucks
 end  # self.down
 
 def self.import
 
-	CSV.foreach("./data/trucks.csv") do | line |
+   CSV.foreach("./data/trucks.csv") do | line |
 
-		record = self.create(
-			:name				=> line[0],
-			:website			=> line[1],
-			:twitter			=> line[2],
-			:facebook		=> line[3],
-			:yelp				=> line[4]
-		)
+      record = self.create(
+         :name          => line[0],
+         :website       => line[1],
+         :twitter       => line[2],
+         :facebook      => line[3],
+         :yelp          => line[4]
+      )
 
-	end
+   end
 
 end  # self.import
 
