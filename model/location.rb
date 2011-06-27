@@ -16,7 +16,7 @@ ActiveRecord::Base.logger = Logger.new(STDERR)
 # create the connection to the database
 dbconfig = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.establish_connection(
-   dbconfig['production']
+   dbconfig[ENV['RACK_ENV'] || 'test']
 )
 
 class Location < ActiveRecord::Base
