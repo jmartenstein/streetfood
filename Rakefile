@@ -55,7 +55,14 @@ task :reload do
    FoodsTrucks.up
    FoodsTrucks.import
 
-end
+end # task :reload
+
+desc "Backup the heroku database"
+task :remote_backup do
+
+   # pull info from the remote database and save to a dated file
+
+end # remote_backup
 
 desc "populate the database"
 task :dummy do
