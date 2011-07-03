@@ -5,6 +5,7 @@
 
 # import standard libraries
 require 'rake'
+require 'rake/testtask'
 require 'date'
 
 # import custom library
@@ -110,6 +111,57 @@ task :show do
 end
 
 end # db namespace
+
+
+namespace "test" do
+
+desc "Setup data structures for the unit test"
+task :setup do
+
+   Food.up
+   Truck.up
+   Neighborhood.up
+   Location.up
+   Stop.up
+   FoodsTrucks.up
+
+   truck1         = Truck.new( :name => "truck foo" )
+   neighborhood1  = Neighborhood.new( :name => "neighborhood foo" )
+   location1      = Location.new( :name => "location foo", :neighborhood_id => 1 )
+   stop1          = Stop.new( :truck_id => 1, :location_id => 1, :date => Date.today )
+
+   truck1.save
+   neighborhood1.save
+   location1.save
+   stop1.save
+
+end # task :setup
+
+desc "Delete the database tables"
+task :teardown do
+
+   FoodsTrucks.down
+   Stop.down
+   Location.down
+   Neighborhood.down
+   Truck.down
+   Food.down
+
+end
+
+desc "Run the unit tests"
+Rake::TestTask.new("run") do | t |
+   t.libs << "test"
+   t.test_files = FileList['test/test_*.rb']
+   t.verbose = true
+end
+
+desc ""
+task :all do
+end
+
+end # test namespace
+
 
 desc "dummy function"
 task :test2 do
