@@ -92,7 +92,10 @@ def self.by_neighborhood( hood )
 
    # for each location, list out the stops
    locations.each do | location |
-      stops.push(self.where( 'location_id LIKE ?', location.id))
+      location_stops = self.where( 'location_id LIKE ?', location.id )
+      location_stops.each do | stop |
+         stops.push(stop)
+      end
    end
 
    return stops
