@@ -125,15 +125,21 @@ task :setup do
    Stop.up
    FoodsTrucks.up
 
+   today_days = Date.today.strftime("%A") + "s"
+
    truck1         = Truck.new( :name => "truck foo" )
    neighborhood1  = Neighborhood.new( :name => "neighborhood foo" )
    location1      = Location.new( :name => "location foo", :neighborhood_id => 1 )
-   stop1          = Stop.new( :truck_id => 1, :location_id => 1, :date => Date.today )
+   location2      = Location.new( :name => "location bar", :neighborhood_id => 1 )
+   stop1          = Stop.new( :truck_id => 1, :location_id => 2, :date => today_days )
+   stop2          = Stop.new( :truck_id => 1, :location_id => 1, :date => Date.today )
 
    truck1.save
    neighborhood1.save
    location1.save
+   location2.save
    stop1.save
+   stop2.save
 
 end # task :setup
 
