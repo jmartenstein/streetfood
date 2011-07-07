@@ -126,20 +126,38 @@ task :setup do
    FoodsTrucks.up
 
    today_days = Date.today.strftime("%A") + "s"
+   tomorrow_days = Date.tomorrow.strftime("%A") + "s"
 
    truck1         = Truck.new( :name => "truck foo" )
+   truck2         = Truck.new( :name => "truck bar" )
+
    neighborhood1  = Neighborhood.new( :name => "neighborhood foo" )
+   neighborhood2  = Neighborhood.new( :name => "neighborhood bar" )
+   
    location1      = Location.new( :name => "location foo", :neighborhood_id => 1 )
    location2      = Location.new( :name => "location bar", :neighborhood_id => 1 )
-   stop1          = Stop.new( :truck_id => 1, :location_id => 2, :date => today_days )
-   stop2          = Stop.new( :truck_id => 1, :location_id => 1, :date => Date.today )
+   location3      = Location.new( :name => "location foobar", :neighborhood_id => 2 )
 
+   today_stop1    = Stop.new( :truck_id => 1, :location_id => 2, :date => today_days, :hours => "11am-2:30pm" )
+   today_stop2    = Stop.new( :truck_id => 1, :location_id => 1, :date => Date.today, :hours => "3pm-7pm" )
+
+   tomorrow_stop1 = Stop.new( :truck_id => 1, :location_id => 3, :date => Date.tomorrow )
+   tomorrow_stop2 = Stop.new( :truck_id => 2, :location_id => 3, :date => Date.tomorrow, :suppressed => true )
+   
    truck1.save
+   truck2.save
+
    neighborhood1.save
+   neighborhood2.save
+
    location1.save
    location2.save
-   stop1.save
-   stop2.save
+   location3.save
+
+   today_stop1.save
+   today_stop2.save
+   tomorrow_stop1.save
+   tomorrow_stop2.save
 
 end # task :setup
 

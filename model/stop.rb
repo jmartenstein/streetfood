@@ -62,12 +62,20 @@ def self.import
       truck = Truck.where('name LIKE ?', line[0]).first
       location = Location.where('name LIKE ?', line[1]).first
 
+      # set suppressed to "true" only if we detect a true on the
+      # line
+      suppressed_boolean = false
+      if (!line[4].nil? && line[4].downcase == "true")
+         suppressed_boolean = true
+      end
+
       # now create records for every line in the csv
       record = self.create(
          :truck_id      => truck.id,
          :location_id   => location.id,
          :date          => line[2],
-         :hours         => line[3]
+         :hours         => line[3],
+         :suppressed    => suppressed_boolean
       )
 
    end
@@ -101,6 +109,13 @@ def self.by_neighborhood( hood )
    return stops
 
 end
+
+# this method acts on an instance, rather than the entire class
+def get_hours()
+
+   return self.hours
+
+end # self.get_hours
 
 #def self.to_s 
    #return "#{truckname}, #{location}, #{date}"

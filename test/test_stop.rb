@@ -56,6 +56,20 @@ def test_neighborhood1
 
 end # def test_neighborhood1
 
+def test_get_hours1
+
+   stop1 = Stop.find(1)
+   assert_equal( "11am-2:30pm", stop1.get_hours )
+
+end # def test_gethours1
+
+def test_get_hours2
+
+   #stop2 = Stop.find(2)
+   #assert_equal( "3pm-7pm", stop2.get_hours )
+
+end # def test_gethours2
+
 def test_by_neighborhood1
 
    expected_stop_list = Stop.by_neighborhood( @neighborhood_name1 )
@@ -73,5 +87,15 @@ def test_by_date1
    assert_equal(expected_stop_list, actual_stop_list)
 
 end # def test_by_date1
+
+def test_by_date2
+
+   # test whether stops are properly suppressed
+   expected_stop_list = [ Stop.find(3) ]
+   actual_stop_list = Stop.by_date( Date.tomorrow )
+
+   assert_equal(expected_stop_list, actual_stop_list)
+
+end # def test_by_date2
 
 end   # class StopTest
