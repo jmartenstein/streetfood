@@ -2,14 +2,25 @@
 
 require 'sinatra'
 require 'haml'
+require 'compass'
 require 'active_support/core_ext/integer/inflections'
 
 require './model/stop.rb'
 require './model/truck.rb'
 require './model/location.rb'
 
-set :views, File.dirname(__FILE__) + '/../static'
-set :public, File.dirname(__FILE__) + '/../static'
+configure do
+
+   Compass.configuration do |config|
+      config.project_path = File.dirname(__FILE__)
+      config.sass_dir = '/../static'
+   end
+
+   set :sass, Compass.sass_engine_options
+   set :views, File.dirname(__FILE__) + '/../static'
+   set :public, File.dirname(__FILE__) + '/../static'
+
+end
 
 #if (settings.environment = "development") {
 #  root_url = "http://localhost:4567"

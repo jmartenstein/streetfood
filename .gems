@@ -2,3 +2,4 @@ activerecord
 activesupport
 sinatra
 haml
+compass
