@@ -10,6 +10,9 @@
 // Import the non-default scaffolding module.
 @import "blueprint/scaffolding";
 
+// Import the grid module
+@import "blueprint/grid";
+
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
 // @include blueprint

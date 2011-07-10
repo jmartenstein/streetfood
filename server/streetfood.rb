@@ -13,7 +13,7 @@ configure do
 
    Compass.configuration do |config|
       config.project_path = File.dirname(__FILE__)
-      config.sass_dir = '/../static'
+      config.sass_dir = '/../static/sass'
    end
 
    set :sass, Compass.sass_engine_options
@@ -52,6 +52,11 @@ end
 
 before do
    global_helper
+end
+
+get '/stylesheets/:name.css' do
+   content_type 'text/css', :charset => 'utf-8'
+   scss( :"sass/#{params[:name]}", Compass.sass_engine_options )
 end
 
 get '/' do

@@ -1,5 +1,7 @@
-%a.title{ :href => @base_url }
-	.header
-		%strong.site-name= @page_text['title']
-		%br
-		%font.site-sub-name= @page_text['sub-title']
+%div{ :class => 'span-8' }
+  %a.title{ :href => @base_url }
+    .large= @page_text['title']
+  -# %br
+%div{ :class => 'span-8' }
+  %font.site-sub-name= @page_text['sub-title']
+%hr

@@ -3,7 +3,7 @@
 
 -# load today's date into a variable, then display it
 -# inside an "info" div
-.info
+%div{ :class => "info" }
    %strong.title #{@day.strftime("%A, %B #{@day.day.ordinalize}")}
 
 .main

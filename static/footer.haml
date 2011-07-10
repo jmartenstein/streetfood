@@ -1,9 +1,10 @@
 .footer
-	%font.footer
-		= @page_text['footer-text']
-		%br
-		- @page_text['footer-links'].each do |link|
-			\[ 
-			%a.footer{ :href=>"#{@base_url}/#{link[0]}" }>= link[1] 
-			\]
-			
+   %hr
+   %font.footer
+      = @page_text['footer-text']
+      %br
+      - @page_text['footer-links'].each do |link|
+         \[ 
+         %a.footer{ :href=>"#{@base_url}/#{link[0]}" }>= link[1] 
+         \]
+
