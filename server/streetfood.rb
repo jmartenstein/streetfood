@@ -54,22 +54,40 @@ before do
    global_helper
 end
 
-get '/stylesheets/:name.css' do
-   content_type 'text/css', :charset => 'utf-8'
-   scss( :"sass/#{params[:name]}", Compass.sass_engine_options )
-end
+
+### Miscellaneous Routes ###
 
 get '/' do
    redirect '/today'
 end
 
+get '/stylesheets/:name.css' do
+   content_type 'text/css', :charset => 'utf-8'
+   scss( :"sass/#{params[:name]}", Compass.sass_engine_options )
+end
+
+get '/about' do 
+   haml :about
+end
+
+# test page for Blueprint CSS grids 
 get '/test' do
    haml :test, :layout => false
 end
 
+
+### By Neighborhood / Location / Stop ###
+
 get '/neighborhoods' do
    haml :neighborhoods
 end
+
+get '/neighborhood/:neighborhood' do | hood |
+   @neighborhood = hood
+   haml :neighborhood
+end
+
+### By Truck ###
 
 get '/trucks' do 
    haml :trucks
@@ -81,21 +99,14 @@ get '/truck/:truck_name' do | name |
    haml :truck	
 end
 
-get '/neighborhood/:neighborhood' do | hood |
-   @neighborhood = hood
-   haml :neighborhood
-end
+
+### By Schedule / Date ###
 
 get '/today' do
    @day = Date.today
    unsorted_stops = Stop.by_date(@day)
    @stops = unsorted_stops.sort_by{ |a| [ a.location.neighborhood.distance, a.location.neighborhood.name, a.location.name ] }
    haml :today
-end
-
-get '/this_week' do
-   @num = 0
-   haml :this_week
 end
 
 get '/today\s:num' do | num |
@@ -105,8 +116,9 @@ get '/today\s:num' do | num |
    haml :today
 end
 
-get '/tomorrow' do 
-   redirect '/today+1'
+get '/this_week' do
+   @num = 0
+   haml :this_week
 end
 
 get '/this_week\s:num' do | num |
@@ -114,7 +126,8 @@ get '/this_week\s:num' do | num |
    haml :this_week
 end
 
-get '/about' do 
-   haml :about
+get '/tomorrow' do 
+   redirect '/today+1'
 end
+
 
