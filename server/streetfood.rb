@@ -63,6 +63,10 @@ get '/' do
    redirect '/today'
 end
 
+get '/test' do
+   haml :test, :layout => false
+end
+
 get '/neighborhoods' do
    haml :neighborhoods
 end
