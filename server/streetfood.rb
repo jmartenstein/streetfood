@@ -87,6 +87,29 @@ get '/neighborhood/:neighborhood' do | hood |
    haml :neighborhood
 end
 
+get '/location/:name/edit' do | name |
+   @location = Location.find_by_name(name)
+   @selected_hood = @location.neighborhood
+   @neighborhoods = Neighborhood.all
+   haml :edit_location
+end
+
+post '/location/:name/edit' do | name |
+
+   @location = Location.find_by_name(name)
+   @neighborhood = Neighborhood.find_by_name(params[ :location_hood ])
+
+   @location.name = params[ :location_name ]
+   @location.notes = params[ :location_notes ]
+   @location.neighborhood = @neighborhood
+
+   @location.save
+
+   redirect "/neighborhood/#{@neighborhood.name}"
+
+end
+
+
 ### By Truck ###
 
 get '/trucks' do 

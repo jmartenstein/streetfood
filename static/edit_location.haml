@@ -1,0 +1,39 @@
+-# edit_location.haml
+-# Justin Martenstein - July, 2011
+
+// %h1 edit location!
+// %h1= @name
+
+%strong.title Edit Location
+
+%form{ :action => "", :method => "post", :class => "edit_location" } 
+   %fieldset
+      %ol
+         %li
+            %label{ :for => "location_name" } Name:
+            %input{ :type => "text", 
+                    :name => "location_name", 
+                    :value => @location.name,
+                    :class => "text" } 
+         %li
+            %label{ :for => "location_notes" } Notes:
+            %input{ :type => "text", 
+                    :name => "location_notes",
+                    :value => @location.notes,
+                    :class => "text" }
+         %li
+            %label{ :for => "location_hood" } Neighborhood:
+            %select{ :name => "location_hood" }
+               - @neighborhoods.each do |hood|
+                  - if (hood.name == @selected_hood.name)
+                     %option{ :value => "#{hood.name}", :selected => '' } #{hood.name}
+                  - else
+                     %option{ :value => "#{hood.name}" } #{hood.name}
+               //%option{ :value => "test1" }  test 1
+               //%option{ :value => "test2" }  test 2 
+      %input{ :type => "submit", 
+              :value => "Submit", 
+              :class => "button" }
+
+%br
+
