@@ -1,5 +1,5 @@
 // This import applies a global reset to any page that imports this stylesheet.
-// @import "blueprint/reset";
+@import "blueprint/reset";
 
 // To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
@@ -47,6 +47,6 @@ body.two-col {
   #content {
     // Two thirds of the grid columns, rounding up.
     // With 24 cols, this is 16.
-    $content-columns: ceil(5 * $blueprint-grid-columns / 6);
+    $content-columns: ceil(2 * $blueprint-grid-columns / 3);
     // true means it's the last column in the row
     @include column($content-columns, true); } }

@@ -1,7 +1,23 @@
-%div{ :class => 'span-8' }
-  %a.title{ :href => @base_url }
-    .large= @page_text['title']
-  -# %br
-%div{ :class => 'span-8' }
-  %font.site-sub-name= @page_text['sub-title']
-%hr
+.title
+   %a.title{ :href => @base_url }
+      .large= @page_text['title']
+   -# %br
+.sub-title
+   %font.site-sub-name= @page_text['sub-title']
+// %hr
+
+.navbar
+
+   .schedule
+      %a{ :href => "#{@base_url}/today" }< Schedule
+
+   .trucks
+      %a{ :href => "#{@base_url}/trucks" }< Trucks
+
+   .neighborhoods
+      %a{ :href => "#{@base_url}/neighborhoods" }< Neighborhoods
+
+   .about
+      %a{ :href => "#{@base_url}/about" }< About
+
+// %hr

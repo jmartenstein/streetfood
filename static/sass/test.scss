@@ -1,0 +1,65 @@
+$blueprint_grid_columns: 24;
+$blueprint-grid-width: 30px;
+
+$show_column_grid_backgrounds: true;
+
+@import "blueprint/grid";
+  
+.two-col {
+   @include container;
+   background-color: #bbbbbb;
+   position: relative;
+   padding: 5px;
+   #header, #footer {
+      @include column($blueprint_grid_columns); }
+   #sidebar {
+      @include column(2); }
+   #content {
+      @include column(4, true); }
+
+      #grid-lines {
+         position: absolute;
+         #grid-1 {
+            @include column(4);
+            border-right: 1px solid #ffffff;
+            height: 400px;
+         }
+      }
+
+   #whole-grid {
+      position: relative;
+      top: 80px;
+      height: 600px;
+
+      #truck-grid {
+         position: absolute;
+         #neighborhood {
+            @include column($blueprint_grid_columns);
+            border-bottom: 1px solid #ffffff;
+            #neighborhood-label {
+               @include column(4);
+               font-weight: bold;
+            }
+         }
+         #address {
+            @include column($blueprint_grid_columns);
+            position: relative;
+            padding-bottom: 10px;
+            #address-label {
+               @include column(4);
+            }
+            #times {
+               @include column(20, true);
+               #address {
+                  @include column(20, true); 
+                  border-bottom: 1px solid; 
+               }
+               #truck {
+                  @include column(20, true);
+                  border: 0px solid;
+               }
+            }
+         }
+      } 
+   }
+}

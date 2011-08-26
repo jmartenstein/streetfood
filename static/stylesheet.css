@@ -32,8 +32,70 @@ strong.site-name {
 	border-width: 0px;
 }*/
 
+.title {
+	text-align: right;
+	padding: 0px;
+	border: 0px solid;
+}
+
+.sub-title{
+	text-align: right;
+	padding: 0px;
+	color: gray;
+	border: 0px solid;
+}
+
 a.title {
 	text-decoration: none;
+}
+
+.navbar {
+   position: relative;
+   height: 14px;
+   padding-top: 15px;
+   padding-bottom: 15px;
+   font-size: 12px;
+}
+
+.schedule {
+   position: absolute;
+   background: #DDDDDD;
+   text-align: center;
+   top: 0;
+   left: 0;
+   width: 125px;
+   padding: 2px;
+   padding-top: 5px;
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+}
+
+.trucks {
+   position: absolute;
+   background: #DDDDDD;
+   text-align: center;
+   top: 0;
+   left: 125px;
+   width: 125px;
+   border: 0px solid black;
+}
+
+.neighborhoods {
+   position: absolute;
+   text-align: center;
+   top: 0;
+   left: 250px;
+   width: 125px;
+   border: 0px solid black;
+}
+
+.about {
+   position: absolute;
+   text-align: center;
+   top: 0;
+   left: 375px;
+   width: 125px;
+   border: 0px solid black;
 }
 
 strong.title {

@@ -5,23 +5,46 @@
 
    %head
       %title Test Page
-      %link{:rel => "stylesheet", :href => "#{@base_url}/stylesheets/screen.css", :type => "text/css", :media => "screen, projection" }
-      %link{:rel => "stylesheet", :href => "#{@base_url}/stylesheets/print.css", :type => "text/css", :media => "print" }
+      %link{:rel => "stylesheet", :href => "#{@base_url}/stylesheets/test.css", :type => "text/css", :media => "screen, projection" }
+      -# %link{:rel => "stylesheet", :href => "#{@base_url}/stylesheets/screen.css", :type => "text/css", :media => "screen, projection" }
+      -# %link{:rel => "stylesheet", :href => "#{@base_url}/stylesheets/print.css", :type => "text/css", :media => "print" }
 
 
-   %body.two-col
-      #container
+   %body
+      .two-col
          #header  
-            %h1 test header
+            %h2 Lunch on Four Wheels
             %hr
-         #sidebar
-            sidebar1
-            %br
-            sidebar2
-         #content
-            content1
-            %br
-            content2
+         #whole-grid
+            //&nbsp;
+            #grid-lines
+               #grid-1
+            #truck-grid
+               #neighborhood
+                  #neighborhood-label
+                     Downtown
+               #address
+                  #address-label
+                     2nd & Pike
+                  #times
+                     #truck
+                        Marination Mobile
+                     #truck
+                        Skillet
+               %br
+               #neighborhood
+                  #neighborhood-label
+                     SoDo
+               #address
+                  #address-label
+                     Starbucks HQ
+                  #times
+                     #truck
+                        Kaosamai
+                     #truck
+                        Fusion on the Run
+               %br
+
          #footer
             %hr
             footer
